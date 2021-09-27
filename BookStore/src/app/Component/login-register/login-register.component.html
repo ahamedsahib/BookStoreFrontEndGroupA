@@ -3,6 +3,7 @@
         <div class="Boxes">
             <mat-card class="imageBox">
                 <img src="../../../assets/2766594.png" class="registerimage">
+                <h1 class="imagetext">ONLINE BOOK SHOPPING</h1>
             </mat-card>
         </div>
         <div class="UserField">
@@ -42,7 +43,43 @@
                         <button type="submit" mat-raised-button class="button" class="Loginbutton">Login</button>
                     </div>
                 </mat-tab>
-                <mat-tab label="SIGNUP"> SIGNUP </mat-tab>
+                <mat-tab label="SIGNUP">
+                    <div class="signup">
+                        <label>FullName</label>
+                        <div class=field>
+                            <mat-form-field class="input" appearance="fill" class="InputField">
+                                <input matInput>
+                            </mat-form-field>
+                        </div>
+                        <label>EmailId</label>
+                        <div class=field>
+                            <mat-form-field class="input" appearance="fill" class="InputField">
+                                <input matInput>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <label>Password</label><br>
+                            <mat-form-field appearance="fill" class="InputField">
+                                <input matInput [type]="hide ? 'password' : 'text'">
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                    [attr.aria-pressed]="hide"
+                                    style="background-color: white;border: unset;padding: 0 !important;">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </div>
+                        <label>Phone</label>
+                        <div class=field>
+                            <mat-form-field class="input" appearance="fill" class="InputField">
+                                <input matInput>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <button type="submit" mat-raised-button class="button" style="width: 100%;"
+                                class="Loginbutton" >SignUp</button>
+                        </div>
+                    </div>
+                </mat-tab>
             </mat-tab-group>
         </div>
     </div>

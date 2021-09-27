@@ -42,6 +42,7 @@ background: #F5F5F5 0% 0% no-repeat padding-box;
 .InputField{
 display: block !important;
 border:0;
+border-color: 1px solid black;
 }
 ::ng-deep .mat-form-field
  {
@@ -60,12 +61,18 @@ border:0;
 }
 
 ::ng-deep .mat-form-field-appearance-fill .mat-form-field-infix {
-    padding: 0;
     background-color: white !important;
+    padding: 5px;
+    border-top: 0 !important;
 }
 .Loginbutton{
     height:35px !important;
     font-size: 18px;
+    background: #A03037 0% 0% no-repeat padding-box;
+    border-radius: 3px;
+    opacity: 1;
+    color: white;
+    border: unset;
 }
 .divider,.button{
     display: flex;
@@ -78,7 +85,14 @@ mat-divider {
 .forgotPassword{
     border:unset;
     background-color: white;
-    color: #9D9D9D;
     display: flex;
     justify-content: flex-end;
+}
+.imagetext{
+    text-align: center;
+font: normal normal medium 15px Roboto;
+letter-spacing: 0px;
+color: #0A0102;
+text-transform: uppercase;
+opacity: 1;
 }
