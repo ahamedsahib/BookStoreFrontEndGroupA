@@ -15,6 +15,8 @@ export class LoginRegisterComponent implements OnInit {
   RegisterForm!:FormGroup;
   LoginEmailExists:any;
   RegisterEmailExists:any;
+  hide = true;
+
   ngOnInit(): void {
     this.RegisterForm = new FormGroup({
       FullName: new FormControl('',[Validators.required, Validators.pattern('^[A-Z]{1}[a-zA-Z]{2,}'),Validators.minLength(3)]),

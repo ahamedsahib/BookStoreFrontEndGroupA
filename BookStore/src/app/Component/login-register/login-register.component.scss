@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+
+@mixin flex( $display, $alignitems, $justifycontent,$flexdirection ) { // Mixin with defaults
+    display:$display;
+    align-items: $alignitems;
+    justify-content: $justifycontent;
+    flex-direction: $flexdirection;
+  }
+@mixin fontSize($size){
+    font-size: $size;
+}
+
+$box-size: 8px;
+
+.Container{
+    @include flex($display:flex,$alignitems:center,$justifycontent:center,$flexdirection:row);
+    margin-top: 3%;
+}
+.card{
+    @include flex($display:flex,$alignitems:center,$justifycontent:center,$flexdirection:row);
+    
+    border-radius: 10px;
+    height: 500px;
+}
+.registerimage{
+width: 245px;
+height: 245px;
+border-radius: 50%;
+background: #F5F5F5 0% 0% no-repeat padding-box;
+}
+.UserField{
+    height: 389px;
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+    border-radius: 10px;
+    padding: 10px 30px 0 30px ;
+}
+.Login{
+    display: flex;
+    flex-direction: column;
+}
+.InputField{
+display: block !important;
+border:0;
+}
+::ng-deep .mat-form-field
+ {
+    .mat-form-field-flex
+     {
+          display: flex;
+          align-items: center;
+          height: 50%;
+          border-radius: 10px!important;
+          font-size: 15.3px;
+          padding: 0.1em !important;
+    }
+    .mat-form-field-underline {
+      width: 0;
+    }
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-infix {
+    padding: 0;
+    background-color: white !important;
+}
+.Loginbutton{
+    height:35px !important;
+    font-size: 18px;
+}
+.divider,.button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+mat-divider {
+    width: 100%;
+}
+.forgotPassword{
+    border:unset;
+    background-color: white;
+    color: #9D9D9D;
+    display: flex;
+    justify-content: flex-end;
+}

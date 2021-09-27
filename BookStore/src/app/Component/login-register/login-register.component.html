@@ -1,1 +1,49 @@
-<p>login-register works!</p>
+<div class="Container">
+    <div class="card">
+        <div class="Boxes">
+            <mat-card class="imageBox">
+                <img src="../../../assets/2766594.png" class="registerimage">
+            </mat-card>
+        </div>
+        <div class="UserField">
+            <mat-tab-group class="Credentials">
+                <mat-tab label="LOGIN" class="Login">
+                    <div>
+                        <label>FullName</label><br>
+                        <mat-form-field class="search" appearance="fill" class="InputField">
+                            <input matInput>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <label>Password</label><br>
+                        <mat-form-field appearance="fill" class="InputField">
+                            <input matInput [type]="hide ? 'password' : 'text'">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide"
+                                style="background-color: white;border: unset;padding: 0 !important;">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </div>
+                    <div class="forgotPassword">
+                        <button mat-flat-button class="forgotPassword">Forgot Password?</button>
+                    </div>
+                    <div>
+                        <button type="submit" mat-raised-button class="button" style="width: 100%;"
+                            class="Loginbutton">Login</button>
+                    </div>
+                    <div class="divider" style="margin: 10px;">
+                        <mat-divider></mat-divider>
+                        <p style="padding-left: 10px;padding-right: 10px;margin: unset;">OR</p>
+                        <mat-divider></mat-divider>
+                    </div>
+                    <div class="button">
+                        <button type="submit" mat-raised-button class="button" class="Loginbutton">Login</button>
+                        <button type="submit" mat-raised-button class="button" class="Loginbutton">Login</button>
+                    </div>
+                </mat-tab>
+                <mat-tab label="SIGNUP"> SIGNUP </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>
