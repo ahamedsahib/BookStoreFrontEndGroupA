@@ -8,6 +8,9 @@ import { HttpServiceService } from '../HttpService/http-service.service';
 export class UserServiceService {
 
   constructor(private httpService:HttpServiceService) { }
+  header = {
+    headers:{ Authorization:"Bearer " + localStorage.getItem('token')}
+  };
   Register(data:any)
   {
     const params = {
@@ -25,5 +28,9 @@ export class UserServiceService {
       Password: data.Password
     }
     return this.httpService.post(`${environment.baseUrl}/api/login`,params);
+  }
+  CheckEmailExists(data:any)
+  {
+    return this.httpService.get(`${environment.baseUrl}/api/checkEmailExists`,null,null,this.header);
   }
 }

@@ -13,6 +13,8 @@ export class LoginRegisterComponent implements OnInit {
   constructor(private userService:UserServiceService, private snackBar:MatSnackBar,private router:Router) { }
   LoginForm!:FormGroup;
   RegisterForm!:FormGroup;
+  LoginEmailExists:any;
+  RegisterEmailExists:any;
   ngOnInit(): void {
     this.RegisterForm = new FormGroup({
       FullName: new FormControl('',[Validators.required, Validators.pattern('^[A-Z]{1}[a-zA-Z]{2,}'),Validators.minLength(3)]),
@@ -46,6 +48,20 @@ export class LoginRegisterComponent implements OnInit {
         horizontalPosition: 'left'
       });
     })
+  }
+  CheckLoginEmailExists()
+  {
+    this.userService.CheckEmailExists(this.LoginForm.value.email).subscribe((result:any)=>{
+      console.log(result);
+      this.LoginEmailExists = result.status?"Email Id Not Exists":"";
+    });
+  }
+  CheckRegisterEmailExists()
+  {
+    this.userService.CheckEmailExists(this.RegisterForm.value.email).subscribe((result:any)=>{
+      console.log(result);
+      this.RegisterEmailExists = result.status?"Email Id Already Exists":"";
+    });
   }
   Login()
   {
