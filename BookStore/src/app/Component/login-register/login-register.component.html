@@ -1,4 +1,4 @@
-<div class="Container">
+<div class="Container" [style.background-color]="backColor">
     <div class="card">
         <div class="Boxes">
             <mat-card class="imageBox">
@@ -7,74 +7,83 @@
             </mat-card>
         </div>
         <div class="UserField">
-            <mat-tab-group class="Credentials">
-                <mat-tab label="LOGIN" class="Login">
-                    <div>
-                        <label>FullName</label><br>
-                        <mat-form-field class="search" appearance="fill" class="InputField">
-                            <input matInput>
-                        </mat-form-field>
-                    </div>
-                    <div>
-                        <label>Password</label><br>
-                        <mat-form-field appearance="fill" class="InputField">
-                            <input matInput [type]="hide ? 'password' : 'text'">
-                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                                [attr.aria-pressed]="hide"
-                                style="background-color: white;border: unset;padding: 0 !important;">
-                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                            </button>
-                        </mat-form-field>
-                    </div>
-                    <div class="forgotPassword">
-                        <button mat-flat-button class="forgotPassword">Forgot Password?</button>
-                    </div>
-                    <div>
-                        <button type="submit" mat-raised-button class="button" style="width: 100%;"
-                            class="Loginbutton">Login</button>
-                    </div>
-                    <div class="divider" style="margin: 10px;">
-                        <mat-divider></mat-divider>
-                        <p style="padding-left: 10px;padding-right: 10px;margin: unset;">OR</p>
-                        <mat-divider></mat-divider>
-                    </div>
-                    <div class="button">
-                        <button type="submit" mat-raised-button class="button" class="Loginbutton">Login</button>
-                        <button type="submit" mat-raised-button class="button" class="Loginbutton">Login</button>
-                    </div>
+            <mat-tab-group class="Credentials remove-border-bottom">
+                <mat-tab label="LOGIN" class="Login" (click)="backColor='#777777'">
+                    <form [formGroup] ="LoginForm">
+                        <div class="loginFields">
+                            <label>Email id</label><br>
+                            <mat-form-field class="search" appearance="fill" class="InputField">
+                                <input matInput formControlName ="EmailId">
+                                <mat-error  style="margin-top:15px;">{{getErrorMessage("EmailId")}}</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="loginFields">
+                            <label>Password</label><br>
+                            <mat-form-field appearance="fill" class="InputField">
+                                <input matInput [type]="hide ? 'password' : 'text'" formControlName ="Password">
+                                <button mat-icon-button matSuffix (click)="hide = !hide"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"
+                                    class="suffixButton">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                <mat-error *ngIf="LoginForm.controls['Password'].invalid" style="margin-top:15px;">{{getErrorMessage("Password")}}</mat-error>
+                            </mat-form-field>
+                            <div class="forgotPassword">
+                                <button mat-flat-button class="forgotPassword">Forgot Password?</button>
+                            </div>
+                        </div>
+                        <div class="loginFields">
+                            <button type="submit" mat-raised-button class="button" style="width: 100%;"
+                                class="Loginbutton">Login</button>
+                        </div>
+                        <div class="divider loginFields" style="margin: 10px;">
+                            <mat-divider style="margin-left: 52px;"></mat-divider>
+                            <p style="padding-left: 10px;padding-right: 10px;margin: unset;font-weight: 700;font-size: 19px;">OR</p>
+                            <mat-divider></mat-divider>
+                        </div>
+                        <div class="center loginFields">
+                            <div class="buttons">
+                                <button type="submit" mat-raised-button class="Loginbutton facebook">Facebook</button>
+                                <button type="submit" mat-raised-button class="Loginbutton google">Google</button>
+                            </div>
+                        </div>
+                    </form>
                 </mat-tab>
-                <mat-tab label="SIGNUP">
+                <mat-tab label="SIGNUP" (click)="changeColor()">
                     <div class="signup">
-                        <label>FullName</label>
-                        <div class=field>
+                        
+                        <div class="loginFields">
+                            <label>FullName</label>
                             <mat-form-field class="input" appearance="fill" class="InputField">
                                 <input matInput>
                             </mat-form-field>
                         </div>
-                        <label>EmailId</label>
-                        <div class=field>
+                        
+                        <div class="loginFields">
+                            <label>EmailId</label>
                             <mat-form-field class="input" appearance="fill" class="InputField">
                                 <input matInput>
                             </mat-form-field>
                         </div>
-                        <div>
+                        <div class="loginFields">
                             <label>Password</label><br>
                             <mat-form-field appearance="fill" class="InputField">
                                 <input matInput [type]="hide ? 'password' : 'text'">
                                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                                     [attr.aria-pressed]="hide"
-                                    style="background-color: white;border: unset;padding: 0 !important;">
+                                    class="suffixButton">
                                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </button>
                             </mat-form-field>
                         </div>
-                        <label>Phone</label>
-                        <div class=field>
+                        
+                        <div class="loginFields" >
+                            <label>Phone</label>
                             <mat-form-field class="input" appearance="fill" class="InputField">
                                 <input matInput>
                             </mat-form-field>
                         </div>
-                        <div>
+                        <div class="loginFields" >
                             <button type="submit" mat-raised-button class="button" style="width: 100%;"
                                 class="Loginbutton" >SignUp</button>
                         </div>

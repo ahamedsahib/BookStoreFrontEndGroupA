@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserServiceService } from 'src/app/Services/UserService/user-service.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+@Injectable({
+  providedIn: 'root'
+})
 @Component({
   selector: 'app-login-register',
   templateUrl: './login-register.component.html',
@@ -16,7 +19,11 @@ export class LoginRegisterComponent implements OnInit {
   LoginEmailExists:any;
   RegisterEmailExists:any;
   hide = true;
-
+  backColor = "#777777";
+  changeColor()
+  {
+    this.backColor = "#ACACAC";
+  }
   ngOnInit(): void {
     this.RegisterForm = new FormGroup({
       FullName: new FormControl('',[Validators.required, Validators.pattern('^[A-Z]{1}[a-zA-Z]{2,}'),Validators.minLength(3)]),
@@ -29,7 +36,21 @@ export class LoginRegisterComponent implements OnInit {
       Password:new FormControl('',[Validators.required, Validators.pattern('^.*(?=.{8,})(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$')])
     });
   }
-
+  getErrorMessage(inputName:string) {
+    let minLen = inputName=="Password"?8:3;
+    
+    if (this.LoginForm.controls[`${inputName}`].hasError('required')) {
+      return `You must enter a value`;
+    }
+    else if(this.LoginForm.controls[`${inputName}`].hasError('minlength')){
+      return `minimum ${minLen} characters`;
+    }
+    else if(this.LoginForm.controls[`${inputName}`].hasError('email'))
+    {
+      return `${inputName} is invalid`;
+    }
+    return this.LoginForm.controls[`${inputName}`].hasError('pattern') ? `${inputName} is invalid` : '';
+}
   Register()
   {
     this.userService.Register(this.RegisterForm.value)

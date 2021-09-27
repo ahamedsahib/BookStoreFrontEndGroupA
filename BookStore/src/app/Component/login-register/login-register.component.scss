@@ -15,11 +15,24 @@ $box-size: 8px;
 
 .Container{
     @include flex($display:flex,$alignitems:center,$justifycontent:center,$flexdirection:row);
-    margin-top: 3%;
+    height: 100%;
+    width: 100%;
+}
+.imageBox
+{
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    border-radius: 21px;
+    opacity: 1;
+    height: 290px;
+    width: 370px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index:1;
 }
 .card{
     @include flex($display:flex,$alignitems:center,$justifycontent:center,$flexdirection:row);
-    
     border-radius: 10px;
     height: 500px;
 }
@@ -29,20 +42,51 @@ height: 245px;
 border-radius: 50%;
 background: #F5F5F5 0% 0% no-repeat padding-box;
 }
+::ng-deep.mat-tab-label, ::ng-deep.mat-tab-label-active{
+    min-width: 0!important;
+    margin: 0px 15px 0px 15px!important;
+   }
 .UserField{
-    height: 389px;
+    height: 410px;
     box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
     border-radius: 10px;
-    padding: 10px 30px 0 30px ;
+    padding: 10px 50px 0 50px;
+    margin-left: -20px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    z-index: 1;
+}
+::ng-deep .mat-tab-label{
+    font-size: 25px !important;
+    font: normal normal medium 25px/33px Roboto;
+ } 
+::ng-deep .remove-border-bottom .mat-tab-header {
+    border-bottom: none!important;
+}
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+    background: #A03037 0% 0% no-repeat padding-box!important;
+    height: 5px!important;
+    border-radius: 3px!important;
+    width: 40px!important;
+    margin-left: 35px;
+
 }
 .Login{
-    display: flex;
-    flex-direction: column;
+    height: 100%;
+    
+}
+.loginFields
+{
+    margin-bottom: 15px;
+    margin-top: 8px;
 }
 .InputField{
 display: block !important;
 border:0;
 border-color: 1px solid black;
+padding-bottom: 0px;
+}
+::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 2px;
 }
 ::ng-deep .mat-form-field
  {
@@ -64,6 +108,9 @@ border-color: 1px solid black;
     background-color: white !important;
     padding: 5px;
     border-top: 0 !important;
+    padding: 8px;
+    background-color: white !important;
+    border-top:0;
 }
 .Loginbutton{
     height:35px !important;
@@ -74,25 +121,70 @@ border-color: 1px solid black;
     color: white;
     border: unset;
 }
+.facebook
+{
+    height:35px !important;
+    background: #4266B2 0% 0% no-repeat padding-box;
+    border-radius: 3px;
+    opacity: 1;
+    color: white;
+    border:unset;
+    font-size: 13px;
+    padding:10px;
+    width: 150px;
+}
+.google{
+    height:35px !important;
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    border: 1px solid #E4E4E4;
+    border-radius: 3px;
+    opacity: 1;
+    font-size: 13px;
+    width: 150px;
+    color: black;
+    padding:10px;
+}
 .divider,.button{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-mat-divider {
+.buttons{
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+mat-divider {
+    width: 70px;
 }
 .forgotPassword{
     border:unset;
     background-color: white;
     display: flex;
     justify-content: flex-end;
+    color: #9D9D9D;
+    cursor: pointer;
+}
+.suffixButton{
+    background-color: white;
+    color:#9D9D9D;
+    border: unset;
+    height: 33px;
+    cursor:pointer;
 }
 .imagetext{
     text-align: center;
-font: normal normal medium 15px Roboto;
-letter-spacing: 0px;
-color: #0A0102;
-text-transform: uppercase;
-opacity: 1;
+    font: normal normal medium 15px Roboto;
+    letter-spacing: 0px;
+    color: #0A0102;
+    text-transform: uppercase;
+    opacity: 1;
+    text-align: right;
+}
+.center
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
