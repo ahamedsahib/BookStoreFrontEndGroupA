@@ -6,6 +6,8 @@ mat-toolbar{
 }
 ::ng-deep .search
  {
+     margin-right:100px;
+     min-width: 550px;
     .mat-form-field-flex {
           display: flex;
           align-items: center;
@@ -90,4 +92,39 @@ mat-toolbar{
 }
 .homeBody{
     margin-top: 38px;
+}
+.header{
+    background-color: #A03037;
+    border-bottom: 1px solid #DADCE0;
+    z-index: 1;
+}
+.searchBar{
+    margin-right:80px ;
+}
+@media only screen and (max-width: 1150px) {
+    ::ng-deep .search
+    {
+        min-width: 350px;
+    }
+}
+@media only screen and (max-width: 950px) {
+    ::ng-deep .search
+    {
+        min-width: 100px;
+    }
+    
+}
+@media only screen and (max-width: 850px) {
+    ::ng-deep .search
+    {
+        min-width: 10px!important;
+    }
+    .header{
+        display: flex;
+        justify-content: space-between!important;
+    }
+    .searchBar{
+        margin-right: -100px;
+    }
+    
 }

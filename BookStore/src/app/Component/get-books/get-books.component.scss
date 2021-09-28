@@ -72,7 +72,7 @@
     padding:6px;
 }
 .bookTitle{
-    font-weight: 700;
+    font-weight: 450;
     font-size: 15px;
     margin: 0;
 }
@@ -108,3 +108,14 @@
   .footer{
     @include displayFlex($direction:row,$justifyContent:none,$alignItems:center);
   }
+@media only screen and (max-width: 600px) {
+    .row{
+        width: 30%;
+        @include displayFlex($direction:column,$justifyContent:center,$alignItems:center);
+    }
+    .allBooks{
+        width: 30%;
+        @include displayFlex($direction:row,$justifyContent:center,$alignItems:center);
+        flex-wrap: wrap;
+    }
+}
