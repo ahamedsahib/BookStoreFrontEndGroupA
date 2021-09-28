@@ -17,13 +17,17 @@ import { ForgotPasswordComponent } from './Component/forgot-password/forgot-pass
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { ResetPasswordComponent } from './Component/reset-password/reset-password.component';
+import { HomeComponent } from './Component/home/home.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginRegisterComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,9 @@ import { ResetPasswordComponent } from './Component/reset-password/reset-passwor
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

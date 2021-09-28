@@ -1,0 +1,54 @@
+<mat-toolbar style="background-color: #A03037;border-bottom: 1px solid #DADCE0;">
+    <div class="menu" style="margin-top: 5px;">
+        <img src="../../../assets/education.svg" class="image">
+        <mat-card-title style="margin-left: 5px;margin-top: 5px;">
+            <span style="color: #FFFFFF;font-weight:normal;">Bookstore</span>
+        </mat-card-title>
+    </div>
+    <div style="margin-right:80px">
+        <mat-form-field class="search" appearance="fill" [style.width.px]=550>
+            <input matInput placeholder="Search">
+            <mat-icon matPrefix style="margin: 0 10px;">search</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="endIcons">
+        <div class="icon">
+            <button mat-icon-button class="example-icon favorite-icon iconbutton" [matMenuTriggerFor]="menu"
+                (click)="show()">
+                <mat-icon class="material-icons-outlined" style="font-size: 27px;  color: #FFFF;
+                font-weight: light;">person_outline</mat-icon><br>
+                <p class="noteTitle" style="margin-left:-7px;">profile</p><br>
+                <div class="bottom" *ngIf="open"></div>
+            </button>
+        </div>
+        <div class="icon">
+            <button mat-icon-button class="example-icon favorite-icon iconbutton">
+                <mat-icon class="material-icons-outlined" style="font-size: 22px;color: #EDD8DA;">shopping_cart
+                </mat-icon><br>
+                <p class="noteTitle">cart</p>
+            </button>
+        </div>
+    </div>
+</mat-toolbar>
+<mat-menu #menu="matMenu" class="myMenu">
+    <div class="userProfile">
+        <h1 style="font-size: 16px;margin: 0;font-weight: 700;">Welcome</h1>
+        <div *ngIf="hide">
+            <p style="color: #888888;">To access account and manage orders</p>
+            <button mat-stroked-button style="margin-bottom: 4px;" class="matmenuLoginbutton">LOGIN/SIGNUP</button>
+        </div>
+        <div *ngIf="!hide">
+            <h1>Ahamed</h1>
+        </div>
+        <div>
+            <mat-divider style="margin:10px 5px;"></mat-divider>
+            <div class="matmenuIcons">
+                <mat-icon mat-list-icon class="maticon" style="margin-right: 3px;">card_travel</mat-icon>
+                <h4 mat-line class="maticon">My Orders</h4>
+            </div>
+            <div class="matmenuIcons" style="margin-top: -10px;">
+                <mat-icon mat-list-icon class="maticon" style="margin-right: 3px;">favorite_border</mat-icon>
+                <h4 mat-line class="maticon">WishList</h4>
+            </div>
+        </div>
+    </div>

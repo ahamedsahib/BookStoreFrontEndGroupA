@@ -16,7 +16,7 @@ export class UserServiceService {
     console.log(data);
     const params = {
       CustomerName: data.FullName,
-      EmailId: data.EmailId,
+      Email: data.EmailId,
       Password: data.Password,
       PhoneNumber: data.Phone
     }
