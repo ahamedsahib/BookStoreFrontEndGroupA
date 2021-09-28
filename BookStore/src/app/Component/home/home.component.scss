@@ -7,13 +7,13 @@ mat-toolbar{
 ::ng-deep .search
  {
      margin-right:100px;
+     margin-top: 34px;
     .mat-form-field-flex {
           display: flex;
           align-items: center;
           height: 50%;
           background-color: white;
           border-radius: 5px!important;
-          margin-top: 2em;
           font-size: 15.3px;
           padding: 4px !important;
           border-top: 0 !important;
@@ -23,11 +23,12 @@ mat-toolbar{
     }
     .mat-form-field-infix {
          border-top: 0 solid transparent; 
+         padding: 5px !important;
     }
 }
-::ng-deep .mat-form-field-appearance-fill .mat-form-field-infix {
-    padding: 5px !important; 
-}
+// ::ng-deep .mat-form-field-appearance-fill .mat-form-field-infix {
+    
+// }
 .image{
     height:26px;
 }

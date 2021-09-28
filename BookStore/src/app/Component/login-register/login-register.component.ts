@@ -26,7 +26,7 @@ export class LoginRegisterComponent implements OnInit {
   }
   ngOnInit(): void {
     this.RegisterForm = new FormGroup({
-      FullName: new FormControl('',[Validators.required, Validators.pattern('^[A-Z]{1}[a-zA-Z]{2,}'),Validators.minLength(3)]),
+      FullName: new FormControl('',[Validators.required, Validators.pattern('^[A-Z]{1}[a-z]{2,}([\\s]?[A-Za-z]{1,})*$'),Validators.minLength(3)]),
       EmailId: new FormControl('',[Validators.required, Validators.email]),
       Password:new FormControl('',[Validators.required, Validators.pattern('^.*(?=.{8,})(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$')]),
       Phone:new FormControl('',[Validators.required,Validators.pattern("^[6-9]{1}[0-9]{9}$")])
@@ -78,7 +78,7 @@ getErrorMessageRegister(inputName:string) {
         });
         if(result.status == true)
         {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/login']);
           this.RegisterForm.reset();
           
         }

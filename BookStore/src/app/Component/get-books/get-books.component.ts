@@ -16,7 +16,7 @@ export class GetBooksComponent implements OnInit {
   books:any=[
     {
       "Image": "../../../assets/book.png",
-      "BookName": "Dont't Make me Think",
+      "BookName": "Don't Make me Think",
       "AuthorName": "Diwakar",
       "Rating":4.5,
       "Price":1200,

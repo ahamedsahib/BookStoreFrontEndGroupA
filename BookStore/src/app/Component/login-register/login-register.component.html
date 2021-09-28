@@ -12,7 +12,7 @@
                     <form [formGroup] ="LoginForm">
                         <div class="loginFields">
                             <label>Email id</label><br>
-                            <mat-form-field class="search" appearance="fill" class="InputField">
+                            <mat-form-field appearance="fill" class="InputField">
                                 <input matInput formControlName ="EmailId">
                                 <mat-error  style="margin-top:15px;">{{getErrorMessage("EmailId")}}</mat-error>
                             </mat-form-field>
