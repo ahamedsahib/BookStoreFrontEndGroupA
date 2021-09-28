@@ -20,14 +20,18 @@ import { ResetPasswordComponent } from './Component/reset-password/reset-passwor
 import { HomeComponent } from './Component/home/home.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
-
+import { GetBooksComponent } from './Component/get-books/get-books.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatStepperModule} from '@angular/material/stepper';
 @NgModule({
   declarations: [
     AppComponent,
     LoginRegisterComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    HomeComponent
+    HomeComponent,
+    GetBooksComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,10 @@ import {MatMenuModule} from '@angular/material/menu';
     MatFormFieldModule,
     MatButtonModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTooltipModule,
+    MatPaginatorModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,42 @@
+<div class="booksContainer">
+    <div class="row">
+        <span class="titleRow">
+            <h1>Books</h1>
+            <p style="color:#BEBEBE">&nbsp;(128 items)</p>
+        </span>
+        <span>
+            <select name="sort" id="sort" class="sortTag">
+                <option [disabled]="true">Sort by relevance</option>
+                <option>Low To High</option>
+                <option>High To Low</option>
+                <option>Newest Arrival</option>
+            </select>
+        </span>
+    </div>
+    <div class="allBooks">
+        <div class="book" *ngFor="let book of books">
+            <mat-card class="bookCard" [style.background-color]="book.BookCount==0?outColor:defaultColor">
+                <div class="imageContainer" matTooltip="QUICK VIEW">
+                    <img src="{{book.Image}}" style="margin: 10px;"/>
+                    <span class="outOfStock" *ngIf="book.BookCount==0">OUT OF STOCK</span>
+                </div>
+                <div class="BookContent">
+                    <p class="bookTitle">{{book.BookName}}</p>
+                    <p class="bookAuthor">by {{book.AuthorName}}</p>
+                    <span class="bookRatingContainer">
+                        <span class="bookRating">
+                            {{book.Rating}} ★
+                        </span>
+                        <span class="bookAuthor">(20)</span>
+                    </span>
+                    <span class="price">
+                        <p>₹.&nbsp;{{book.Price}}</p>
+                        <p class="strike"><s>₹.&nbsp;2000</s></p>
+                    </span>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <div calss="footer">
+    </div>
+</div>

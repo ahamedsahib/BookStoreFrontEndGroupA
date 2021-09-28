@@ -79,6 +79,8 @@ getErrorMessageRegister(inputName:string) {
         if(result.status == true)
         {
           this.router.navigate(['/home']);
+          this.RegisterForm.reset();
+          
         }
     },error => {  
       this.snackBar.open(`${error.error.message}`, '', {
