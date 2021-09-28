@@ -104,10 +104,10 @@ getErrorMessageRegister(inputName:string) {
   }
   Login()
   {
+    console.log(this.LoginForm.value);
     this.userService.Login(this.LoginForm.value)
     .subscribe((result:any)=>{
       console.log(result);
-        localStorage.setItem('token',result.jwtToken);
         localStorage.setItem('userDetails',JSON.stringify(result.userData));
         this.snackBar.open(`${result.message}`, '', {
           duration: 3000,

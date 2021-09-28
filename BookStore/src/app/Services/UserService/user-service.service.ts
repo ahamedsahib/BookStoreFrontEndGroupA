@@ -25,7 +25,7 @@ export class UserServiceService {
   Login(data:any)
   {
     const params = {
-      EmailId: data.EmailId,
+      Email: data.EmailId,
       Password: data.Password
     }
     return this.httpService.post(`${environment.baseUrl}/api/User/login`,params);
