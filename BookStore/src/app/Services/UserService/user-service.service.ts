@@ -13,13 +13,14 @@ export class UserServiceService {
   };
   Register(data:any)
   {
+    console.log(data);
     const params = {
-      FullName: data.FullName,
+      CustomerName: data.FullName,
       EmailId: data.EmailId,
       Password: data.Password,
-      Phone: data.Phone
+      PhoneNumber: data.Phone
     }
-    return this.httpService.post(`${environment.baseUrl}/api/register`,params);
+    return this.httpService.post(`${environment.baseUrl}/api/User/register`,params);
   }
   Login(data:any)
   {
@@ -27,7 +28,7 @@ export class UserServiceService {
       EmailId: data.EmailId,
       Password: data.Password
     }
-    return this.httpService.post(`${environment.baseUrl}/api/login`,params);
+    return this.httpService.post(`${environment.baseUrl}/api/User/login`,params);
   }
   CheckEmailExists(data:any)
   {

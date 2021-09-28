@@ -53,6 +53,7 @@ export class LoginRegisterComponent implements OnInit {
 }
   Register()
   {
+    console.log(this.RegisterForm.value);
     this.userService.Register(this.RegisterForm.value)
     .subscribe((result:any)=>{
       this.snackBar.open(`${result.message}`, '', {

@@ -50,25 +50,27 @@
                     </form>
                 </mat-tab>
                 <mat-tab label="SIGNUP" (click)="changeColor()">
+                    <form [formGroup] ="RegisterForm">
+
                     <div class="signup">
                         
                         <div class="loginFields">
                             <label>FullName</label>
                             <mat-form-field class="input" appearance="fill" class="InputField">
-                                <input matInput>
+                                <input matInput formControlName="FullName">
                             </mat-form-field>
                         </div>
                         
                         <div class="loginFields">
                             <label>EmailId</label>
                             <mat-form-field class="input" appearance="fill" class="InputField">
-                                <input matInput>
+                                <input matInput formControlName="EmailId">
                             </mat-form-field>
                         </div>
                         <div class="loginFields">
                             <label>Password</label><br>
                             <mat-form-field appearance="fill" class="InputField">
-                                <input matInput [type]="hide ? 'password' : 'text'">
+                                <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password"> 
                                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                                     [attr.aria-pressed]="hide"
                                     class="suffixButton">
@@ -79,15 +81,16 @@
                         
                         <div class="loginFields" >
                             <label>Phone</label>
-                            <mat-form-field class="input" appearance="fill" class="InputField">
-                                <input matInput>
+                            <mat-form-field class="input" appearance="fill" class="InputField" >
+                                <input matInput formControlName="Phone">
                             </mat-form-field>
                         </div>
                         <div class="loginFields" >
                             <button type="submit" mat-raised-button class="button" style="width: 100%;"
-                                class="Loginbutton" >SignUp</button>
+                                class="Loginbutton" (click)="Register()">SignUp</button>
                         </div>
                     </div>
+                    </form>
                 </mat-tab>
             </mat-tab-group>
         </div>
