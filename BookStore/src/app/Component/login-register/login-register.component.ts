@@ -51,6 +51,21 @@ export class LoginRegisterComponent implements OnInit {
     }
     return this.LoginForm.controls[`${inputName}`].hasError('pattern') ? `${inputName} is invalid` : '';
 }
+getErrorMessageRegister(inputName:string) {
+  let minLen = inputName=="Password"?8:3;
+  
+  if (this.RegisterForm.controls[`${inputName}`].hasError('required')) {
+    return `You must enter a value`;
+  }
+  else if(this.RegisterForm.controls[`${inputName}`].hasError('minlength')){
+    return `minimum ${minLen} characters`;
+  }
+  else if(this.RegisterForm.controls[`${inputName}`].hasError('email'))
+  {
+    return `${inputName} is invalid`;
+  }
+  return this.RegisterForm.controls[`${inputName}`].hasError('pattern') ? `${inputName} is invalid` : '';
+}
   Register()
   {
     console.log(this.RegisterForm.value);
