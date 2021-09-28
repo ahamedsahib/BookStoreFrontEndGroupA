@@ -110,7 +110,7 @@ getErrorMessageRegister(inputName:string) {
     this.userService.Login(this.LoginForm.value)
     .subscribe((result:any)=>{
       console.log(result);
-        localStorage.setItem('userDetails',JSON.stringify(result.userData));
+        localStorage.setItem('userDetails',JSON.stringify(result.data));
         this.snackBar.open(`${result.message}`, '', {
           duration: 3000,
           verticalPosition: 'bottom',
