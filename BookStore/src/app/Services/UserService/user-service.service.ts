@@ -20,6 +20,7 @@ export class UserServiceService {
       Password: data.Password,
       PhoneNumber: data.Phone
     }
+    console.log(params);
     return this.httpService.post(`${environment.baseUrl}/api/User/register`,params);
   }
   Login(data:any)
@@ -28,10 +29,24 @@ export class UserServiceService {
       Email: data.EmailId,
       Password: data.Password
     }
+    console.log(params);
     return this.httpService.post(`${environment.baseUrl}/api/User/login`,params);
   }
   CheckEmailExists(data:any)
   {
     return this.httpService.get(`${environment.baseUrl}/api/checkEmailExists`,null,null,this.header);
+  }
+  ForgotPassword(data:any){
+    const email = data.email;
+    console.log(email)
+    return this.httpService.post(`${environment.baseUrl}/api/User/forgetPassword?email=${email}`);
+  }
+  ResetPassword(data: any,formData:any){
+    const params = {
+     UserId: JSON.parse(data!).CustomerId,
+     NewPassword: formData.password
+    }
+    console.log(params);
+    return this.httpService.put(`${environment.baseUrl}/api/User/resetpassword`,params);
   }
 }

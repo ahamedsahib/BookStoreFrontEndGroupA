@@ -32,15 +32,10 @@
 </mat-toolbar>
 <mat-menu #menu="matMenu" class="myMenu">
     <div class="userProfile">
-        <h1 style="font-size: 16px;margin: 0;font-weight: 700;">Welcome</h1>
-        <div *ngIf="hide">
+        <div *ngIf="!hide">
+            <h1 style="font-size: 16px;margin: 0;font-weight: 700;">Welcome</h1>
             <p style="color: #888888;">To access account and manage orders</p>
             <button mat-stroked-button style="margin-bottom: 4px;" class="matmenuLoginbutton">LOGIN/SIGNUP</button>
-        </div>
-        <div *ngIf="!hide">
-            <h1>Ahamed</h1>
-        </div>
-        <div>
             <mat-divider style="margin:10px 5px;"></mat-divider>
             <div class="matmenuIcons">
                 <mat-icon mat-list-icon class="maticon" style="margin-right: 3px;">card_travel</mat-icon>
@@ -50,6 +45,22 @@
                 <mat-icon mat-list-icon class="maticon" style="margin-right: 3px;">favorite_border</mat-icon>
                 <h4 mat-line class="maticon">WishList</h4>
             </div>
+        </div>
+        <div *ngIf="hide">
+            <h1 style="font-size: 16px;margin: 0;font-weight: 700;">Hello Ahamed,</h1>
+            <div class="matmenuIcons">
+                <mat-icon mat-list-icon class="maticon" style="margin-right: 10px;">person_outline</mat-icon>
+                <h4 mat-line class="maticon">Profile</h4>
+            </div>
+            <div class="matmenuIcons" style="margin-top: -10px;">
+                <mat-icon mat-list-icon class="maticon" style="margin-right: 10px;">card_travel</mat-icon>
+                <h4 mat-line class="maticon">My Orders</h4>
+            </div>
+            <div class="matmenuIcons" style="margin-top: -10px;">
+                <mat-icon mat-list-icon class="maticon" style="margin-right: 10px;">favorite_border</mat-icon>
+                <h4 mat-line class="maticon">WishList</h4>
+            </div>
+            <button mat-stroked-button style="margin-bottom: 4px;width:110px" class="matmenuLoginbutton">LOGOUT</button>
         </div>
     </div>
 </mat-menu>
