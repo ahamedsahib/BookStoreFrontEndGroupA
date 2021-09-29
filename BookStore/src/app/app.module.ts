@@ -25,6 +25,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatStepperModule} from '@angular/material/stepper';
 import { WishListComponent } from './Component/wish-list/wish-list.component';
+import { BookComponent } from './Component/book/book.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,8 @@ import { WishListComponent } from './Component/wish-list/wish-list.component';
     ResetPasswordComponent,
     HomeComponent,
     GetBooksComponent,
-    WishListComponent
+    WishListComponent,
+    BookComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import { WishListComponent } from './Component/wish-list/wish-list.component';
     MatMenuModule,
     MatTooltipModule,
     MatPaginatorModule,
-    MatStepperModule
+    MatStepperModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
