@@ -68,4 +68,5 @@
     <app-get-books *ngIf="page=='allBooks'"></app-get-books>
     <app-wish-list *ngIf="page=='wishList'"></app-wish-list>
     <app-user-profile *ngIf="page=='userProfile'"></app-user-profile>
+    <app-book [bid]="bid" *ngIf="page=='viewBook'"></app-book>
 </div>

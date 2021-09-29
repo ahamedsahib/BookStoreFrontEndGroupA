@@ -1,7 +1,7 @@
 <div class="Content">
 <div class="Container">
     <div class="row">
-        <div  [routerLink]="['/home']" style="color: #9C9C9C;cursor: pointer;">Home</div>
+        <div  (click)="changePage()" style="color: #9C9C9C;cursor: pointer;">Home</div>
         <div><span style="font-size: 18px;">/</span><span class="home">Book</span></div>
     </div>
     <div class="BookPage">

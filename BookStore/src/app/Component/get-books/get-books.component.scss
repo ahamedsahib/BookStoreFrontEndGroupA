@@ -50,7 +50,7 @@
 }
 .bookCard{
     min-width: 240px;
-    min-height: 260px;
+    min-height: 270px;
     padding: 0;
 }
 
@@ -58,7 +58,7 @@
     background-color: white;
     padding:5px 40px 5px 40px;
     font-weight: 600;
-    margin: -50px 0px 0px 0px;
+    margin: -30px 0px 0px 0px;
     z-index: 1;
     font-family:Verdana, Geneva, Tahoma, sans-serif
 }
@@ -114,6 +114,10 @@
   .footer{
     @include displayFlex($direction:row,$justifyContent:none,$alignItems:center);
   }
+  .paginator{
+      margin-top: 45px;
+    @include displayFlex($direction:row,$justifyContent:none,$alignItems:center);
+  }
 @media only screen and (max-width: 600px) {
     .row{
         width: 30%;
@@ -124,4 +128,10 @@
         @include displayFlex($direction:row,$justifyContent:center,$alignItems:center);
         flex-wrap: wrap;
     }
+}
+::ng-deep .ngx-pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background-color: #388E3C !important;
+    color: #fefefe;
+    cursor: pointer !important;
 }

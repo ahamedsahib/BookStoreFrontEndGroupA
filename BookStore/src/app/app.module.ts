@@ -29,7 +29,7 @@ import { BookComponent } from './Component/book/book.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileComponent } from './Component/user-profile/user-profile.component';
 import {MatRadioModule} from '@angular/material/radio';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +65,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatPaginatorModule,
     MatStepperModule,
     NgbModule,
-    MatRadioModule
+    MatRadioModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

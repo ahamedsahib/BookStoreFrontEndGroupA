@@ -1,23 +1,36 @@
-import { Component, OnInit, Type } from '@angular/core';
+import { Component, Injectable, OnInit, Type } from '@angular/core';
 import { BookServiceService } from 'src/app/Services/BookService/book-service.service';
-
+import { HomeComponent } from '../home/home.component';
+@Injectable({ 
+  providedIn: 'root'
+})
 @Component({
   selector: 'app-get-books',
   templateUrl: './get-books.component.html',
   styleUrls: ['./get-books.component.scss']
 })
 export class GetBooksComponent implements OnInit {
+  p: number = 1;
   outColor="#E8E8E8";
   defaultColor = "#FFF";
   display=1;
-  constructor(private bookService:BookServiceService) { }
+  constructor(private bookService:BookServiceService,private home:HomeComponent) {
+   }
   ngOnInit(): void {
     this.getBooks();
   }
   books:any = [];
   returnedBooks:any = [];
   arr:any = [];
-  
+  bId:any;
+  ViewBook(bookC:any)
+  {
+
+    this.bId = bookC.bookId;
+    console.log(this.bId,"book");
+    this.home.page = 'viewBook';
+    this.home.bid = bookC.bookId;
+  }
   cooks:any=[
     {
       "Image": "../../../assets/book.png",
@@ -123,13 +136,17 @@ export class GetBooksComponent implements OnInit {
       (result:any)=>{
         this.returnedBooks = result.data;
         console.log(this.returnedBooks);
-        this.ChangeOrder(1);
+        this.ChangeOrder(0);
     });
   }
   ChangeOrder(num:any)
   {
     console.log(this.returnedBooks,"retbooks");
-    if(num==1)
+    if(num==0)
+    {
+      this.books = this.returnedBooks;
+    }
+    else if(num==1)
     {
       this.books = this.returnedBooks.sort((a:any, b:any) => (a.price < b.price ? -1 : 1));
     }

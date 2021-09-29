@@ -14,7 +14,7 @@
         </span>
     </div>
     <div class="allBooks">
-        <div class="book" *ngFor="let book of books">
+        <div class="book" *ngFor="let book of books | paginate: { itemsPerPage: 12, currentPage: p }" (click)="ViewBook(book)">
             <mat-card class="bookCard" [style.background-color]="book.bookCount==0?outColor:defaultColor">
                 <div class="imageContainer" matTooltip="QUICK VIEW">
                     <img src="{{book.image}}" style="margin: 10px;" class="image"/>
@@ -37,6 +37,9 @@
             </mat-card>
         </div>
     </div>
-    <div calss="footer">
+    <div class="paginator">
+        <pagination-controls class="pagi" (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <div class="footer">
     </div>
 </div>
