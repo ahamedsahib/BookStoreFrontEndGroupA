@@ -17,7 +17,7 @@
                 (click)="show()">
                 <mat-icon class="material-icons-outlined" style="font-size: 27px;  color: #FFFF;
                 font-weight: light;">person_outline</mat-icon><br>
-                <p class="noteTitle" style="margin-left:-7px;">profile</p><br>
+                <p class="noteTitle" style="margin-left:-14px;">{{userdetails != null? userdetails.customerName:'Profile'}}</p><br>
                 <div class="bottom" *ngIf="open"></div>
             </button>
         </div>
@@ -32,10 +32,10 @@
 </mat-toolbar>
 <mat-menu #menu="matMenu" class="myMenu">
     <div class="userProfile">
-        <div *ngIf="!hide">
+        <div *ngIf="userdetails == null">
             <h1 style="font-size: 16px;margin: 0;font-weight: 700;">Welcome</h1>
             <p style="color: #888888;">To access account and manage orders</p>
-            <button mat-stroked-button style="margin-bottom: 4px;" class="matmenuLoginbutton">LOGIN/SIGNUP</button>
+            <button mat-stroked-button style="margin-bottom: 4px;" class="matmenuLoginbutton" [routerLink]="['/login']">LOGIN/SIGNUP</button>
             <mat-divider style="margin:10px 5px;"></mat-divider>
             <div class="matmenuIcons">
                 <mat-icon mat-list-icon class="maticon" style="margin-right: 3px;">card_travel</mat-icon>
@@ -46,8 +46,8 @@
                 <h4 mat-line class="maticon">WishList</h4>
             </div>
         </div>
-        <div *ngIf="hide">
-            <h1 style="font-size: 16px;margin: 0;font-weight: 700;">Hello Ahamed,</h1>
+        <div *ngIf="userdetails != null">
+            <h1 style="font-size: 16px;margin: 0;font-weight: 700;">Hello {{userdetails.customerName}}</h1>
             <div class="matmenuIcons">
                 <mat-icon mat-list-icon class="maticon" style="margin-right: 10px;">person_outline</mat-icon>
                 <h4 mat-line class="maticon">Profile</h4>

@@ -9,8 +9,8 @@ export class HomeComponent implements OnInit {
 
   open=false;
   hide=true;
+  userdetails=JSON.parse(localStorage.getItem('userDetails')!);
   constructor() { }
-
   ngOnInit(): void {
   }
 show(){
