@@ -38,7 +38,7 @@ export class ResetPasswordComponent implements OnInit {
       });
       if(result.status == true)
       {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/login']);
       }
     }, error =>{
       this.snackBar.open(`${error.error.message}`, '', {
@@ -47,6 +47,13 @@ export class ResetPasswordComponent implements OnInit {
         horizontalPosition: 'left'
       });
     })
+    }
+    else{
+      this.snackBar.open('Otp is invalid', '', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left'
+      });
     }
     
   }

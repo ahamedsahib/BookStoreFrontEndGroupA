@@ -8,11 +8,20 @@ import { HttpServiceService } from '../HttpService/http-service.service';
 export class BookServiceService {
 
   constructor(private httpService:HttpServiceService) { }
+  userdetails=JSON.parse(localStorage.getItem('userDetails')!);
+  uid = this.userdetails.userId;
   header = {
     headers:{ Authorization:"Bearer " + localStorage.getItem('token')}
   };
   GetBooks()
   {
-    return this.httpService.get(`${environment.baseUrl}/api/getBooks`,null,null,this.header);
+    console.log("getBooks");
+    
+    return this.httpService.post(`${environment.baseUrl}/api/Book/GetAllBooks`);
+  }
+  GetWishList()
+  {
+    //need to change api route
+    return this.httpService.post(`${environment.baseUrl}/api/Book/getWishList=${this.uid}`);
   }
 }

@@ -20,13 +20,15 @@
 }
 .allBooks{
     width: 80%;
-    @include displayFlex($direction:row,$justifyContent:space-between,$alignItems:center);
+    @include displayFlex($direction:row,$justifyContent:flex-start,$alignItems:center);
     flex-wrap: wrap;
+    
 }
 .book{
     margin-top: 25px;
     cursor: pointer;
     box-shadow: none;
+    margin-right: 25px;
 }
 .book:hover{
     
@@ -93,6 +95,10 @@
     color: #FFFFFF;
     font-weight: 500;
     margin: 2px;
+}
+.image{
+    height: 130px;
+    width: 100px;
 }
 .price{
     font-weight: 500;

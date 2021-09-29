@@ -1,0 +1,33 @@
+<div class="wishListContainer">
+    <div class="row">
+        <div (click)="changePage()" style="color: #9C9C9C;cursor: pointer;">Home</div>
+        <div><span style="font-size: 18px;">/</span><span class="home">Wishlist</span></div>
+    </div>
+    <div class="wishList">
+        <div class="wishListHeader">
+            <h2>My Wishlist (02)</h2>
+        </div>
+        <div class="items">
+            <mat-card class="wishListCard" *ngFor="let book of wishList">
+                <div class="wishListBook">
+                    <span>
+                        <img src="{{book.image}}" style="margin: 10px;" />
+                    </span>
+                    <div class="bookContent">
+                        <p class="bookTitle">{{book.bookName}}</p>
+                        <p class="bookAuthor">by {{book.authorName}}</p>
+                        <span class="price">
+                            <h2>₹.&nbsp;{{book.price}}</h2>
+                            <p class="strike"><s>₹.&nbsp;{{book.originalPrice}}</s></p>
+                        </span>
+                    </div>
+                </div>
+                <span>
+                    <button mat-icon-button class="example-icon favorite-icon" matTooltip="Remove From WishList">
+                        <mat-icon mat-list-icon class="material-icons-outlined">delete</mat-icon>
+                    </button>
+                </span>
+            </mat-card>
+        </div>
+    </div>
+</div>

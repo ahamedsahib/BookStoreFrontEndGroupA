@@ -9,6 +9,7 @@ export class HomeComponent implements OnInit {
 
   open=false;
   hide=true;
+  page = 'allBooks';
   userdetails=JSON.parse(localStorage.getItem('userDetails')!);
   constructor() { }
   ngOnInit(): void {

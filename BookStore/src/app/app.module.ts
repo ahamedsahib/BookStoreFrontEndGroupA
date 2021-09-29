@@ -24,6 +24,7 @@ import { GetBooksComponent } from './Component/get-books/get-books.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatStepperModule} from '@angular/material/stepper';
+import { WishListComponent } from './Component/wish-list/wish-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     ForgotPasswordComponent,
     ResetPasswordComponent,
     HomeComponent,
-    GetBooksComponent
+    GetBooksComponent,
+    WishListComponent
   ],
   imports: [
     BrowserModule,
