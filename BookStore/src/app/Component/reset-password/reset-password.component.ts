@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
+  hide = true;
   ResetPasswordForm!: FormGroup;
   constructor(
     private userService:UserServiceService, 

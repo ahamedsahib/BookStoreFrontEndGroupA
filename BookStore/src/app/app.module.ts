@@ -27,6 +27,9 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { WishListComponent } from './Component/wish-list/wish-list.component';
 import { BookComponent } from './Component/book/book.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserProfileComponent } from './Component/user-profile/user-profile.component';
+import {MatRadioModule} from '@angular/material/radio';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +39,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     GetBooksComponent,
     WishListComponent,
-    BookComponent
+    BookComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +64,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatTooltipModule,
     MatPaginatorModule,
     MatStepperModule,
-    NgbModule
+    NgbModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

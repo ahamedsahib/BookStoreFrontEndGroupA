@@ -49,4 +49,7 @@ export class UserServiceService {
     console.log(params);
     return this.httpService.put(`${environment.baseUrl}/api/User/resetpassword`,params);
   }
+  GetUserAddress(userId:any){
+    return this.httpService.get(`${environment.baseUrl}/api/User/getUserAddress?userId=${userId}`)
+  }
 }
