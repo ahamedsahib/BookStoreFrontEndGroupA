@@ -14,14 +14,20 @@
     padding-bottom: 15px;
     width: 70%;
 }
-.row{
-        width: 80%;
-        @include displayFlex($direction:row,$justifyContent:start,$alignItems:center); 
-        .home{
-            font-weight: 600;
-        }
+.navigatebuttons{
+    @include displayFlex($direction:row,$justifyContent:flex-start);
+    .homebutton{
+       font-size: 15px;
+       color: #9D9D9D;
+       cursor: pointer !important;
+    }
+    .book{
+     font-size: 15px;
+     font-weight: bold;
+    }
 }
 .BookPage{
+    margin-top: 15px;
     @include displayFlex($direction:row,$justifyContent:unset,$alignItems:unset);
 }
 .bookImage{
@@ -132,12 +138,13 @@ border:1px solid #E6E6E6;
     height:35px
 }
 .customerfeedback{
-padding: 5px;
+padding: 10px;
 background-color: #F9F9F9;
 }
 ngb-rating {
     color: #FFC107;
     font-size: 30px;
+    border-color:  grey;
 }
 .textarea{
     padding: 5px;
@@ -152,4 +159,20 @@ ngb-rating {
         background-color: #3371B5;
         color: #fff;
     }
+}
+.reviews{
+    margin-top: 5px;
+    @include displayFlex($direction:row,$justifyContent:unset,$alignItems:unset);
+}
+
+.profile{
+   border-radius: 50%;
+   height:20px;
+   width:20px;
+   border:1px solid black;
+}
+.username{
+    margin-top: 2px;
+    font-weight: 500;
+    font-size:17px;
 }

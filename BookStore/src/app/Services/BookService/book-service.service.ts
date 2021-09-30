@@ -15,13 +15,14 @@ export class BookServiceService {
   };
   GetBooks()
   {
-    console.log("getBooks");
-    
     return this.httpService.post(`${environment.baseUrl}/api/Book/GetAllBooks`);
   }
   GetWishList()
   {
-    //need to change api route
     return this.httpService.post(`${environment.baseUrl}/api/Book/getWishList=${this.uid}`);
+  }
+  GetBookDetails(id:any)
+  {
+    return this.httpService.post(`${environment.baseUrl}/api/Book/GetBooks`,id);
   }
 }

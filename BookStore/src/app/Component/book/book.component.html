@@ -1,69 +1,90 @@
 <div class="Content">
-<div class="Container">
-    <div class="row">
-        <div  (click)="changePage()" style="color: #9C9C9C;cursor: pointer;">Home</div>
-        <div><span style="font-size: 18px;">/</span><span class="home">Book</span></div>
-    </div>
-    <div class="BookPage">
-        <div class="images">
-            <div class="imageouterbox">
-                <img src="../../../assets/Image 11@2x.png" class="showimage">
-            </div>
-            <div class="imageouterbox">
-                <img src="../../../assets/Image 11@2x.png" class="showimage">
-            </div>
+    <div class="Container">
+        <div class="navigatebuttons">
+            <span [routerLink]="['/home']" class="homebutton">Home/</span>
+            <span class="book">Book</span>
         </div>
-        <div class="bookItem">
-            <div class="bookImage">
-                <img src="../../../assets/Image 11@2x.png" class="image">
-            </div>
-            <div class="bookimageBottomButton">
-                <div class="buttons">
-                    <button type="submit" mat-raised-button class="actionButton addtobag">ADD TO BAG</button>
-                    <button type="submit" mat-raised-button class="actionButton wishlist">
-                        <mat-icon>favorite</mat-icon> WISHLIST
-                    </button>
+        <div class="BookPage">
+            <div class="images">
+                <div class="imageouterbox">
+                    <img src="{{book.image}}" class="showimage">
+                </div>
+                <div class="imageouterbox">
+                    <img src="{{book.image}}" class="showimage">
                 </div>
             </div>
-        </div>
-        <div class="bookDetails">
-            <div class="BookContent">
-                <p class="bookTitle">Don't Make me Think</p>
-                <p class="bookAuthor">by Ahamed</p>
-                <span class="bookRatingContainer">
-                    <span class="bookRating">
-                        4.3 ★
+            <div class="bookItem">
+                <div class="bookImage">
+                    <img src="{{book.image}}" class="image">
+                </div>
+                <div class="bookimageBottomButton">
+                    <div class="buttons">
+                        <button type="submit" mat-raised-button class="actionButton addtobag">ADD TO BAG</button>
+                        <button type="submit" mat-raised-button class="actionButton wishlist">
+                            <mat-icon>favorite</mat-icon> WISHLIST
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="bookDetails">
+                <div class="BookContent">
+                    <p class="bookTitle">{{book.bookName}}</p>
+                    <p class="bookAuthor">by {{book.authorName}}</p>
+                    <span class="bookRatingContainer">
+                        <span class="bookRating">
+                            {{book.rating}} ★
+                        </span>
+                        <span class="count">(20)</span>
                     </span>
-                    <span class="count">(20)</span>
-                </span>
-                <span class="price">
-                    <p class="bookprice">Rs.&nbsp;1300</p>
-                    <p class="strike"><s>Rs.&nbsp;2000</s></p>
-                </span>
-            </div>
-            <mat-divider></mat-divider>
-            <div class="BookDescription">
-                <span class="bookdetail">
-                    <span class="dotemoji">⚫</span><p>Book Detail</p>
-                </span>
-                <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quo placeat commodi inventore? Perspiciatis 
-                    quas vel ex maiores unde rerum hic, eveniet accusamus quae voluptatum
-                     amet qui ea illum explicabo!
-                </p>
-            </div>
-            <mat-divider></mat-divider>
-            <div class="Feedback">
-                <h1>Customer Feedback</h1>
-                <div class="customerfeedback">
-                    <p>Overall rating</p>
-                    <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating><br>
-                    <textarea cdkTextareaAutosize placeholder="Write your review" class="noteTitle" class="textarea"></textarea>
-                    <div class="buttonContainer">
-                        <button type="submit" mat-raised-button class="button">Submit</button>
+                    <span class="price">
+                        <p class="bookprice">Rs.&nbsp;{{book.price}}</p>
+                        <p class="strike"><s>Rs.&nbsp;{{book.originalPrice}}</s></p>
+                    </span>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="BookDescription">
+                    <span class="bookdetail">
+                        <span class="dotemoji">⚪</span>
+                        <p>Book Detail</p>
+                    </span>
+                    <p class="description">{{book.description}}</p>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="Feedback">
+                    <h1>Customer Feedback</h1>
+                    <div class="customerfeedback">
+                        <p style="font-weight: 450;">Overall rating</p>
+                        <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating><br>
+                        <textarea cdkTextareaAutosize placeholder="Write your review" class="noteTitle"
+                            class="textarea"></textarea>
+                        <div class="buttonContainer">
+                            <button type="submit" mat-raised-button class="button">Submit</button>
+                        </div>
+                    </div>
+                    <div class="reviews">
+                        <div>
+                            <mat-icon>account_circle</mat-icon>
+                        </div>
+                        <div style="margin-left:5px ;">
+                            <p class="username">Diwakar</p>
+                            <ngb-rating [max]="5" [(rate)]="Rating" [readonly]="true"></ngb-rating><br>
+                            <p>The book is amazing,I had a wonderful time reading books,i would suggest people reading
+                                my comments defenitley by reading books</p>
+                        </div>
+                    </div>
+                    <div class="reviews">
+                        <div>
+                            <mat-icon>account_circle</mat-icon>
+                        </div>
+                        <div style="margin-left:5px ;">
+                            <p class="username">Gayathri Sri</p>
+                            <ngb-rating [max]="5" [(rate)]="Rating" [readonly]="true"></ngb-rating><br>
+                            <p>The book is amazing,I had a wonderful time reading books,i would suggest people reading
+                                my comments defenitley by reading books</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
