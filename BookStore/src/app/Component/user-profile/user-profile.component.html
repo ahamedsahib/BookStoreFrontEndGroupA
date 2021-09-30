@@ -1,40 +1,40 @@
 <div class="mainContainer">
     <div class="row">
         <div (click)="changePage()" style="color: #9C9C9C;cursor: pointer;">Home</div>
-        <div><span style="font-size: 18px;">/</span><span class="home">Wishlist</span></div>
+        <div><span style="font-size: 18px;">/</span><span class="home">Profile</span></div>
     </div>
     <div class="formContainer">
         <div class="formContent">
             <div class="header"> 
                 <div class="sub-header">
                     <h1>Personal Details</h1> 
-                    <p (click)="userDisable=false" *ngIf="userDisable">Edit</p>
-                    <p (click)="userDisable=true" *ngIf="!userDisable">Cancel</p>
+                    <p (click)="userDisable=false;userData=this.userdetails" *ngIf="userDisable">Edit</p>
+                    <p (click)="userDisable=true;userData=this.userdetails" *ngIf="!userDisable">Cancel</p>
                 </div>
-                <button mat-raised-button color="primary" *ngIf=!userDisable>SAVE</button>
+                <button mat-raised-button color="primary" *ngIf="!userDisable" (click)="EditUser();userDisable=!userDisable">SAVE</button>
             </div>
             <div class="formField">
                 <mat-label>Full Name</mat-label>
                 <mat-form-field appearance="outline" class="inputField">
-                    <input matInput type="text" [disabled]="userDisable" value="{{userdetails.customerName}}">
+                    <input matInput type="text" [disabled]="userDisable" value="{{userdetails.customerName}}"  [(ngModel)]="userData.customerName">
                 </mat-form-field>
             </div>
             <div class="formField">
                 <mat-label>Email Id</mat-label>
                 <mat-form-field appearance="outline" class="inputField">
-                    <input matInput type="text" [disabled]="userDisable" value="{{userdetails.email}}">
+                    <input matInput type="text" [disabled]="true" value="{{userdetails.email}}">
                 </mat-form-field>
             </div>
             <div class="formField">
                 <mat-label>Password</mat-label>
                 <mat-form-field appearance="outline" class="inputField">
-                    <input matInput type="password" [disabled]="userDisable" value="{{userdetails.password}}">
+                    <input matInput type="password" [disabled]="true" value="{{userdetails.password}}">
                 </mat-form-field>
             </div>
             <div class="formField">
                 <mat-label>Mobile Number</mat-label>
                 <mat-form-field appearance="outline" class="inputField">
-                    <input matInput type="text" [disabled]="userDisable" value="{{userdetails.phoneNumber}}">
+                    <input matInput type="text" [disabled]="userDisable" [value]="userdetails.phoneNumber"  [(ngModel)]="userData.phoneNumber">
                 </mat-form-field>
             </div>
         </div>
@@ -46,34 +46,34 @@
             <div class="header"> 
                 <div class="sub-header">
                     <h2>1.{{addressdetails.type}}</h2>
-                    <p (click)="addressDisable=false" *ngIf="addressDisable">Edit</p>
-                    <p (click)="addressDisable=true" *ngIf="!addressDisable">Cancel</p>
+                    <p (click)="addressDisable=false;data=this.addressdetails" *ngIf="addressDisable" >Edit</p>
+                    <p (click)="addressDisable=true;data=this.addressdetails" *ngIf="!addressDisable">Cancel</p>
                 </div>
-                <button mat-raised-button color="primary" *ngIf=!addressDisable>SAVE</button>
+                <button mat-raised-button color="primary" *ngIf="!addressDisable" (click)="EditAddress();addressDisable=!addressDisable">SAVE</button>
             </div>
             <div class="formField">
                 <mat-label>Address</mat-label>
                 <mat-form-field appearance="outline" class="inputField">
-                    <textarea matInput type="text" [disabled]="addressDisable" value="{{addressdetails.address}}"></textarea>
+                    <textarea matInput type="text" [disabled]="addressDisable" [value]="addressdetails.address" [(ngModel)]="data.address"></textarea>
                 </mat-form-field>
             </div>
             <div class="formField addressField">
                 <div class="placeField" style="width: 50%; margin-right: 10px;"> 
                     <mat-label>City/Town</mat-label>
                     <mat-form-field appearance="outline" class="inputField">
-                        <input matInput type="text" [disabled]="addressDisable" value="{{addressdetails.city}}">
+                        <input matInput type="text" [disabled]="addressDisable" [value]="addressdetails.city" [(ngModel)]="data.city">
                     </mat-form-field>
                 </div>
                <div class="placeField" style="width: 50%;">
                     <mat-label>State</mat-label>
                     <mat-form-field appearance="outline" class="inputField">
-                        <input matInput type="text" [disabled]="addressDisable" value="{{addressdetails.state}}">
+                        <input matInput type="text" [disabled]="addressDisable" [value]="addressdetails.state" [(ngModel)]="data.state">
                     </mat-form-field>
                 </div>
             </div>
             <div class="formField">
                 <mat-label>Type</mat-label>
-                <mat-radio-group aria-label="Select an option" class="typeField" [value]='addressdetails.type'>
+                <mat-radio-group aria-label="Select an option" class="typeField" [value]='addressdetails.type' [(ngModel)]="data.type" [disabled]="addressDisable">
                     <mat-radio-button value="Home">Home</mat-radio-button>
                     <mat-radio-button value="Work">Work</mat-radio-button>
                     <mat-radio-button value="Other">Other</mat-radio-button>

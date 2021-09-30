@@ -50,6 +50,28 @@ export class UserServiceService {
     return this.httpService.put(`${environment.baseUrl}/api/User/resetpassword`,params);
   }
   GetUserAddress(userId:any){
-    return this.httpService.get(`${environment.baseUrl}/api/User/getUserAddress?userId=${userId}`)
+    return this.httpService.get(`${environment.baseUrl}/api/User/getUserAddress?userId=${userId}`);
+  }
+  EditAddress(data:any, addressId: any,userId:any){
+    const params = {
+      addressId: addressId,
+      address: data.address,
+      city:data.city,
+      state:data.state,
+      type:data.type,
+      userId:userId
+    }
+    console.log(params,"get address");
+    return this.httpService.post(`${environment.baseUrl}/api/User/EditAddress`,params);
+  }
+  EditUserDetails(data:any, userId:any){
+    const params = {
+      customerId:userId,
+      customerName:data.customerName,
+      email:data.emai,
+      phoneNumber:data.phoneNumber,
+      password:data.password
+    }
+    return this.httpService.post(`${environment.baseUrl}/api/User/EditUserDetails`,params);
   }
 }
