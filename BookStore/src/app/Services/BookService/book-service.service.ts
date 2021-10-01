@@ -20,7 +20,7 @@ export class BookServiceService {
   }
   GetWishList()
   {
-    return this.httpService.get(`${environment.baseUrl}/getwishlist?userId=${this.userdetails.customerId}`);
+    return this.httpService.get(`${environment.baseUrl}/api/WishList/getwishlist?userId=${this.userdetails.customerId}`);
   }
   GetBookDetails(id:any)
   {
@@ -32,12 +32,13 @@ export class BookServiceService {
       BookId:book.bookId,
       UserId:uid
     }
-    return this.httpService.post(`${environment.baseUrl}/AddToWishList`,params);
+    console.log("wishlist:"+params);
+    return this.httpService.post(`${environment.baseUrl}/api/WishList/AddToWishList`,params);
   }
   RemoveFromWishList(wishListId:any)
   {
     console.log(wishListId,"remove from wishlist");
     
-    return this.httpService.delete(`${environment.baseUrl}/RemoveFromWishList?wishListId=${wishListId}`);
+    return this.httpService.delete(`${environment.baseUrl}/api/WishList/RemoveFromWishList?wishListId=${wishListId}`);
   }
 }

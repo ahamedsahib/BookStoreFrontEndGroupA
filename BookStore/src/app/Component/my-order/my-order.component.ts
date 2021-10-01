@@ -3,35 +3,32 @@ import { BookServiceService } from 'src/app/Services/BookService/book-service.se
 import { HomeComponent } from '../home/home.component';
 
 @Component({
-  selector: 'app-my-cart',
-  templateUrl: './my-cart.component.html',
-  styleUrls: ['./my-cart.component.scss']
+  selector: 'app-my-order',
+  templateUrl: './my-order.component.html',
+  styleUrls: ['./my-order.component.scss']
 })
-export class MyCartComponent implements OnInit {
+export class MyOrderComponent implements OnInit {
 
-  constructor(private home:HomeComponent,private bookService:BookServiceService) { }
+  constructor(
+    private home:HomeComponent,
+    private bookService:BookServiceService
+  ) { }
+
   ngOnInit(): void {
-    //get cart
   }
 
-  PlaceOrder()
+  changePage()
   {
-    this.showCustomerDetails = true;
-    this.showCart = false;
+    this.home.page = 'allBooks';
   }
-  confirmUserdeatils()
+  getBooks()
   {
-    this.showCustomerDetails = false;
-    this.showOrderSummary = true;
+    this.bookService.GetWishList().subscribe(
+      (result:any)=>{
+        
+    });
   }
-  Checkout()
-  {
-    //pass cart
-  }
-  showCustomerDetails = false;
-  showOrderSummary = false;
-  showCart = true;
-  cartBooks:any=[
+  order:any=[
     {
       "image": "../../../assets/book.png",
       "bookName": "Don't Make me Think",
@@ -51,9 +48,5 @@ export class MyCartComponent implements OnInit {
       "originalPrice":1500
     }
   ]
-  changePage()
-  {
-    this.home.page = 'allBooks';
-  }
-
 }
+

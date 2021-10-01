@@ -33,6 +33,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {MatBadgeModule} from '@angular/material/badge';
 import { MyCartComponent } from './Component/my-cart/my-cart.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { MyOrderComponent } from './Component/my-order/my-order.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     WishListComponent,
     BookComponent,
     UserProfileComponent,
-    MyCartComponent
+    MyCartComponent,
+    MyOrderComponent
   ],
   imports: [
     BrowserModule,
