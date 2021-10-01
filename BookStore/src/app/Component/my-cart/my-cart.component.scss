@@ -1,0 +1,106 @@
+@mixin displayFlex($property:flex, $direction:row,$justifyContent:center,$alignItems:center) {
+    display: $property;
+    flex-direction:$direction;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+  }
+
+  .MainContainer{
+    margin: 10px;
+    @include displayFlex($direction:column,$justifyContent:flex-start,$alignItems:center);
+    padding-bottom: 15px;
+}
+.row{
+    width: 80%;
+    @include displayFlex($direction:row,$justifyContent:start,$alignItems:center);
+}
+.home{
+    font-weight: 600;
+}
+.cartContainer
+{
+    width: 80%;
+    margin-top: 20px;
+}
+.cartCard{
+    width: 65%;
+    border: 1px solid #DDDDDD;
+}
+ .cartTitle
+{
+    @include displayFlex($direction:row,$justifyContent:space-between,$alignItems:center);
+}
+.image{
+    height: 120px;
+    margin: 10px;
+}
+.cartBookContent{
+    @include displayFlex($direction:row,$justifyContent:flex-start,$alignItems:start);
+    width: 100%;
+    margin-top: 10px;
+}
+.bookTitle{
+    font-weight: 450;
+    font-size: 15px;
+    margin: 0;
+}
+.bookAuthor{
+    color: #9C9C9C;
+    margin: 2px;
+}
+.bookContent{
+    @include displayFlex($direction:column,$justifyContent:flex-start,$alignItems:start);
+    height: 100%;
+    margin-top: 10px;
+    margin-left: 28px;
+}
+.price{
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 10px;
+    @include displayFlex($direction:row,$justifyContent:space-between,$alignItems:center);
+    width: 47%;
+    margin-left: 7px;
+}
+.strike{
+    color:#9C9C9C;
+    margin-left: 10px;
+}
+.button{
+    border-radius: 50%;
+    padding: 3px 8px 3px 8px;
+    margin: 5px;
+    background-color: #FAFAFA;
+    border: 1px solid #DDDDDD;
+    cursor: pointer;
+}
+.countOfOrder
+{
+    width: 35px;
+    background-color: #FAFAFA;
+    border: 1px solid #DDDDDD;
+    outline: none;
+}
+.place
+{
+    display: flex;
+    justify-content: flex-end;
+}
+.userDetails
+{
+    width: 57%;
+    @include displayFlex($direction:row,$justifyContent:space-between,$alignItems:center);
+    label{
+        padding: 0;
+        margin: 0;
+        font-size: 13px;
+        font-weight: 500;
+    }
+    input{
+        padding: 8px;
+        margin: 0;
+    }
+    div{
+        @include displayFlex($direction:column,$justifyContent:unset,$alignItems:start);
+    }
+}

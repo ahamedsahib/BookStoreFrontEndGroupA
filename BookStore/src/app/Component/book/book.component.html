@@ -1,8 +1,8 @@
 <div class="Content">
     <div class="Container">
         <div class="navigatebuttons">
-            <span [routerLink]="['/home']" class="homebutton">Home/</span>
-            <span class="book">Book</span>
+            <span (click)="changePage()" class="homebutton">Home/</span>
+            <span class="book">Book ({{book.bookId}})</span>
         </div>
         <div class="BookPage">
             <div class="images">
@@ -16,11 +16,12 @@
             <div class="bookItem">
                 <div class="bookImage">
                     <img src="{{book.image}}" class="image">
+                    <span class="outOfStock" *ngIf="book.bookCount==0">OUT OF STOCK</span>
                 </div>
                 <div class="bookimageBottomButton">
                     <div class="buttons">
                         <button type="submit" mat-raised-button class="actionButton addtobag">ADD TO BAG</button>
-                        <button type="submit" mat-raised-button class="actionButton wishlist">
+                        <button type="submit" mat-raised-button class="actionButton wishlist" (click)="AddToWishList(book)">
                             <mat-icon>favorite</mat-icon> WISHLIST
                         </button>
                     </div>
@@ -37,8 +38,8 @@
                         <span class="count">(20)</span>
                     </span>
                     <span class="price">
-                        <p class="bookprice">Rs.&nbsp;{{book.price}}</p>
-                        <p class="strike"><s>Rs.&nbsp;{{book.originalPrice}}</s></p>
+                        <p class="bookprice">₹&nbsp;{{book.price}}</p>
+                        <p class="strike"><s>₹&nbsp;{{book.originalPrice}}</s></p>
                     </span>
                 </div>
                 <mat-divider></mat-divider>
@@ -47,7 +48,7 @@
                         <span class="dotemoji">⚪</span>
                         <p>Book Detail</p>
                     </span>
-                    <p class="description">{{book.description}}</p>
+                    <p class="description">{{book.bookDescription}}</p>
                 </div>
                 <mat-divider></mat-divider>
                 <div class="Feedback">

@@ -4,6 +4,7 @@
             <h1>Books</h1>
             <p style="color:#BEBEBE">&nbsp;(128 items)</p>
         </span>
+        <span>{{bookName}}</span>
         <span>
             <select name="sort" id="sort" class="sortTag" #sel (change)="ChangeOrder(sel.value)">
                 <option [disabled]="true">Sort by relevance</option>
@@ -30,7 +31,7 @@
                         <span class="bookAuthor">(20)</span>
                     </span>
                     <span class="price">
-                        <p>₹.&nbsp;{{book.price}}</p>
+                        <p>₹&nbsp;{{book.price}}</p>
                         <p class="strike"><s>₹.&nbsp;{{book.originalPrice}}</s></p>
                     </span>
                 </div>
@@ -39,7 +40,5 @@
     </div>
     <div class="paginator">
         <pagination-controls class="pagi" (pageChange)="p = $event"></pagination-controls>
-    </div>
-    <div class="footer">
     </div>
 </div>

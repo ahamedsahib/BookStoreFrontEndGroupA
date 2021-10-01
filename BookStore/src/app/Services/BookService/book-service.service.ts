@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { HttpServiceService } from '../HttpService/http-service.service';
 
@@ -7,9 +8,9 @@ import { HttpServiceService } from '../HttpService/http-service.service';
 })
 export class BookServiceService {
 
-  constructor(private httpService:HttpServiceService) { }
+  constructor(private httpService:HttpServiceService , private router:Router) { }
   userdetails=JSON.parse(localStorage.getItem('userDetails')!);
-  uid = this.userdetails.userId;
+  //uid = this.userdetails.userId;
   header = {
     headers:{ Authorization:"Bearer " + localStorage.getItem('token')}
   };
@@ -19,10 +20,24 @@ export class BookServiceService {
   }
   GetWishList()
   {
-    return this.httpService.post(`${environment.baseUrl}/api/Book/getWishList=${this.uid}`);
+    return this.httpService.get(`${environment.baseUrl}/getwishlist?userId=${this.userdetails.customerId}`);
   }
   GetBookDetails(id:any)
   {
     return this.httpService.post(`${environment.baseUrl}/api/Book/GetBooks`,id);
+  }
+  AddToWishList(book:any,uid:any)
+  {
+    const params ={
+      BookId:book.bookId,
+      UserId:uid
+    }
+    return this.httpService.post(`${environment.baseUrl}/AddToWishList`,params);
+  }
+  RemoveFromWishList(wishListId:any)
+  {
+    console.log(wishListId,"remove from wishlist");
+    
+    return this.httpService.delete(`${environment.baseUrl}/RemoveFromWishList?wishListId=${wishListId}`);
   }
 }

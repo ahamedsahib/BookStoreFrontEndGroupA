@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { BookServiceService } from 'src/app/Services/BookService/book-service.service';
 import { HomeComponent } from '../home/home.component';
 
@@ -9,9 +10,10 @@ import { HomeComponent } from '../home/home.component';
 })
 export class WishListComponent implements OnInit {
 
-  constructor(private home:HomeComponent,private bookService:BookServiceService) { }
-  //wishList:any = [];
+  constructor(private home:HomeComponent,private bookService:BookServiceService , private snackBar:MatSnackBar) { }
+  wishList:any = [];
   ngOnInit(): void {
+    this.getBooks();
   }
   changePage()
   {
@@ -26,24 +28,38 @@ export class WishListComponent implements OnInit {
         
     });
   }
-  wishList:any=[
-    {
-      "image": "../../../assets/book.png",
-      "bookName": "Don't Make me Think",
-      "authorName": "Diwakar",
-      "rating":4.5,
-      "price":1200,
-      "bookCount":5,
-      "originalPrice":1500
-    },
-    {
-      "image": "../../../assets/book.png",
-      "bookName": "Don't Make me Think",
-      "authorName": "Diwakar",
-      "rating":4.5,
-      "price":1200,
-      "bookCount":5,
-      "originalPrice":1500
-    }
-  ]
+  RemoveFromWishList(wishListId:any)
+  {
+    console.log(wishListId,"wishlistid");
+    this.bookService.RemoveFromWishList(wishListId).subscribe(
+      (result:any)=>{
+        this.snackBar.open(`Removed From WishList`, '', {
+          duration: 3000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+        
+    });
+    
+  }
+  // wishList:any=[
+  //   {
+  //     "image": "../../../assets/book.png",
+  //     "bookName": "Don't Make me Think",
+  //     "authorName": "Diwakar",
+  //     "rating":4.5,
+  //     "price":1200,
+  //     "bookCount":5,
+  //     "originalPrice":1500
+  //   },
+  //   {
+  //     "image": "../../../assets/book.png",
+  //     "bookName": "Don't Make me Think",
+  //     "authorName": "Diwakar",
+  //     "rating":4.5,
+  //     "price":1200,
+  //     "bookCount":5,
+  //     "originalPrice":1500
+  //   }
+  // ]
 }

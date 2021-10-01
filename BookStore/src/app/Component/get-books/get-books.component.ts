@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit, Type } from '@angular/core';
+import { Component, Injectable, Input, OnInit, Type } from '@angular/core';
 import { BookServiceService } from 'src/app/Services/BookService/book-service.service';
 import { HomeComponent } from '../home/home.component';
 @Injectable({ 
@@ -10,26 +10,34 @@ import { HomeComponent } from '../home/home.component';
   styleUrls: ['./get-books.component.scss']
 })
 export class GetBooksComponent implements OnInit {
+  @Input() bookName:any;
   p: number = 1;
   outColor="#E8E8E8";
   defaultColor = "#FFF";
   display=1;
+  res:any;
   constructor(private bookService:BookServiceService,private home:HomeComponent) {
    }
   ngOnInit(): void {
     this.getBooks();
-  }
+    this.Search();
+    }
   books:any = [];
   returnedBooks:any = [];
   arr:any = [];
   bId:any;
   ViewBook(bookC:any)
   {
-
     this.bId = bookC.bookId;
     console.log(this.bId,"book");
     this.home.page = 'viewBook';
-    this.home.bid = bookC.bookId;
+    this.home.bid = bookC;
+  }
+  Search()
+  {
+    this.books = this.books.filter((res: { bookName: string; })=>{ 
+        return res.bookName.toLocaleLowerCase().match(this.bookName.toLocaleLowerCase());
+      });
   }
   cooks:any=[
     {

@@ -1,0 +1,96 @@
+<div class="MainContainer">
+    <div class="row">
+        <div (click)="changePage()" style="color: #9C9C9C;cursor: pointer;">Home</div>
+        <div><span style="font-size: 18px;">/</span><span class="home">My cart</span></div>
+    </div>
+    <div class="cartContainer" *ngIf="showCart==false" (click)="showCart=true">
+        <mat-card class="cartCard" >
+          <h3>My Cart</h3>
+        </mat-card>
+    </div>
+    <div class="cartContainer" *ngIf="showCart">
+        <mat-card class="cartCard" >
+           <div class="cartTitle">
+                <h3>My cart ({{cartBooks.length}})</h3>
+           </div>
+           <div class="cartBookContent" *ngFor="let book of cartBooks">
+                <span>
+                    <img src="{{book.image}}" class="image" />
+                </span>
+                <div class="bookContent">
+                    <p class="bookTitle">{{book.bookName}}</p>
+                    <p class="bookAuthor">by {{book.authorName}}</p>
+                    <span class="price">
+                        <h2>₹.&nbsp;{{book.price}}</h2>
+                        <p class="strike"><s>₹.&nbsp;{{book.originalPrice}}</s></p>
+                    </span>
+                    <div class="numberOfBooks">
+                        <span class="button">-</span>
+                        <input type="text" class="countOfOrder">
+                        <span class="button">+</span>
+                        <button mat-button>Remove</button>
+                    </div>
+                </div>
+            </div>
+            <div class="place">
+                <button mat-raised-button color="primary" (click)="PlaceOrder()">PLACE ORDER</button>
+            </div>
+        </mat-card>
+    </div>
+    <div class="cartContainer" *ngIf="showCustomerDetails==false">
+        <mat-card class="cartCard" >
+          <h3>Customer Details</h3>
+        </mat-card>
+    </div>
+    <div class="cartContainer" *ngIf="showCustomerDetails">
+        <mat-card class="cartCard" >
+           <div class="cartTitle">
+                <h3>Customer Details</h3>
+                <button mat-stroked-button style="border-color: #A03037;color:#A03037">Add New Address</button>
+           </div>
+           <div class="cartBookContent">
+                <div class="userDetails">
+                    <div>
+                        <label>FullName</label>
+                        <input type="text" >
+                    </div>
+                    <div>
+                        <label>Phone Number</label>
+                        <input type="text" >
+                    </div>
+                </div>
+            </div>
+        <div class="place">
+            <button mat-raised-button color="primary" (click)="confirmUserdeatils()">CONTINUE</button>
+        </div>
+        </mat-card>
+    </div>
+    <div class="cartContainer" *ngIf="showOrderSummary==false">
+        <mat-card class="cartCard" >
+          <h3>Order Summary</h3>
+        </mat-card>
+    </div>
+    <div class="cartContainer" *ngIf="showOrderSummary">
+        <mat-card class="cartCard" >
+           <div class="cartTitle">
+                <h3>Order Summary</h3>
+           </div>
+           <div class="cartBookContent" *ngFor="let book of cartBooks">
+            <span>
+                <img src="{{book.image}}" class="image" />
+            </span>
+            <div class="bookContent">
+                <p class="bookTitle">{{book.bookName}}</p>
+                <p class="bookAuthor">by {{book.authorName}}</p>
+                <span class="price">
+                    <h2>₹.&nbsp;{{book.price}}</h2>
+                    <p class="strike"><s>₹.&nbsp;{{book.originalPrice}}</s></p>
+                </span>
+            </div>
+            </div>
+            <div class="place">
+                <button mat-raised-button color="primary" (click)="Checkout()">CHECKOUT</button>
+            </div>
+        </mat-card>
+    </div>
+</div>

@@ -7,7 +7,7 @@
     </div>
     <div class="searchBar">
         <mat-form-field class="search" appearance="fill">
-            <input matInput placeholder="Search">
+            <input matInput placeholder="Search" [(ngModel)]="bookName" >
             <mat-icon matPrefix style="margin: 0 10px;">search</mat-icon>
         </mat-form-field>
     </div>
@@ -22,7 +22,7 @@
             </button>
         </div>
         <div class="icon">
-            <button mat-icon-button class="example-icon favorite-icon iconbutton">
+            <button mat-icon-button class="example-icon favorite-icon iconbutton" (click)="page='myCart'">
                 <mat-icon class="material-icons-outlined" style="font-size: 22px;color: #EDD8DA;">shopping_cart
                 </mat-icon><br>
                 <p class="noteTitle">cart</p>
@@ -60,15 +60,16 @@
                 <mat-icon mat-list-icon class="maticon" style="margin-right: 10px;">favorite_border</mat-icon>
                 <h4 mat-line class="maticon">WishList</h4>
             </div>
-            <button mat-stroked-button style="margin-bottom: 4px;width:110px" class="matmenuLoginbutton" [routerLink]="['/login']">LOGOUT</button>
+            <button mat-stroked-button style="margin-bottom: 4px;width:110px" class="matmenuLoginbutton" (click)="Logout()">LOGOUT</button>
         </div>
     </div>
 </mat-menu>
 <div class="homeBody">
-    <app-get-books *ngIf="page=='allBooks'"></app-get-books>
+    <app-get-books [bookName]="bookName" *ngIf="page=='allBooks'"></app-get-books>
     <app-wish-list *ngIf="page=='wishList'"></app-wish-list>
     <app-user-profile *ngIf="page=='userProfile'"></app-user-profile>
     <app-book [bid]="bid" *ngIf="page=='viewBook'"></app-book>
+    <app-my-cart *ngIf="page=='myCart'"></app-my-cart>
 </div>
 <div class="footer">
     CopyRight &copy; 2021 Cohort B private limited. All rights received

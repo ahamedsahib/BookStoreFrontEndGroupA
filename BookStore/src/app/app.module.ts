@@ -30,7 +30,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileComponent } from './Component/user-profile/user-profile.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {NgxPaginationModule} from 'ngx-pagination';
+<<<<<<< Updated upstream
 
+=======
+import { MyCartComponent } from './Component/my-cart/my-cart.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+>>>>>>> Stashed changes
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +46,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     GetBooksComponent,
     WishListComponent,
     BookComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    MyCartComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +73,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatStepperModule,
     NgbModule,
     MatRadioModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
