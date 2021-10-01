@@ -12,9 +12,29 @@ export class UserProfileComponent implements OnInit {
   userDisable = true;
   addressDisable = true;
   userdetails:any;
-  addressdetails:any = [];
+  index:any;
+  addressdetails:any;
+  uniqueAddress:any;
+  ad= [
+    {
+      "addressId":1,
+      "type":"Home",
+      "address":"Bridze labz Solutions LLP No42,14th Main Cross Street,15th Cross Street, Sector4,Opp to BDA complex near to me,Kumarkopam street,HLS Layout,Bangalore",
+      "city":"Bangalore",
+      "state":"Karnataka"
+    },
+    {
+      "addressId":2,
+      "type":"Work",
+      "address":"Bridze labz Solutions LLP No42,14th Main Cross Street,15th Cross Street, Sector4,Opp to BDA complex near to me,Kumarkopam street,HLS Layout,Bangalore",
+      "city":"Broadway",
+      "state":"Chennai"
+    }
+  ];
   data:any = [];
   userData:any = [];
+  OpenAddressForm=false;
+  openAddressDetail=false;
   
   constructor(
     private userService: UserServiceService,
@@ -27,17 +47,22 @@ export class UserProfileComponent implements OnInit {
     this.userdetails=user;
     this.userData=this.userdetails;
     console.log(this.userData);
-
     this.getAddress();
   }
-
+  
+open(address:any){
+  this.uniqueAddress=address;
+  this.openAddressDetail=!this.openAddressDetail
+}
   getAddress(){
-    this.userService.GetUserAddress(this.userdetails.customerId)
-    .subscribe((result:any)=>{
-      console.log(result);
-      this.addressdetails = result.data[0];
-      //console.log(this.addressdetails);
-    });
+    // this.userService.GetUserAddress(this.userdetails.customerId)
+    // .subscribe((result:any)=>{
+    //   console.log(result);
+    //   this.addressdetails = result.data[0];
+    //   //console.log(this.addressdetails);
+    // });
+    this.addressdetails=this.ad;
+    this.data=this.ad;
   }
   changePage()
   {
@@ -84,5 +109,11 @@ export class UserProfileComponent implements OnInit {
         horizontalPosition: 'left'
       });
     })
+  }
+  showAddressDetails(address:any,i:any)
+  {
+    this.index=i;
+    this.uniqueAddress=address;
+    this.openAddressDetail=!this.openAddressDetail
   }
 }

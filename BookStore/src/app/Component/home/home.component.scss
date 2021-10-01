@@ -31,8 +31,10 @@ mat-toolbar{
 }
 
 .image{
-    height:28px;
+    height:30px;
+    margin-bottom: 11px;
 }
+
 .menu{
     display: flex;
     align-items: center;
@@ -79,9 +81,11 @@ mat-toolbar{
     border: 1px solid #B35C60;
     color: #B35C60;
 }
-::ng-deep #mat-menu-panel-0{
+::ng-deep .matmenu{
     width:200px;
     margin-top: 21px !important;
+    display: flex;
+    justify-content: center;
 }
 .bottom{
     width: 90px !important;

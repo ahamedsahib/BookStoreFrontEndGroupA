@@ -26,14 +26,16 @@ export class BookComponent implements OnInit {
   Rating=3;
   
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
     console.log(this.bid,"bookId in books");
     this.book = this.bid;
   }
   getBooks()
   {
     this.bookService.GetBookDetails(this.bid).subscribe(
-      (result:any)=>{
+      (result:any)=>
+      {
         this.book = result.data;
         console.log(this.book);
     });

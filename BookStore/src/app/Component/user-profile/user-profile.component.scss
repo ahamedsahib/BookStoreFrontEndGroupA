@@ -39,7 +39,6 @@
 }
 .inputField{
     background-color: #F5F5F5;
-    //background-color: #FFFFFF;
     border-radius: 2px;
 }
 
@@ -76,4 +75,24 @@ mat-label{
    align-items: center;
    flex-direction: row;
    margin-left: 203px;
+}
+.addressType{
+    font-size: 20px;
+    font-weight: 550;
+    margin: 0;
+}
+.addressTitle{
+    font-size: 18px;
+    margin-top: 5px;
+    font-size: 500;
+    margin-left: 28px;
+}
+.addressdetails
+{
+    font: normal normal normal 16px Roboto;
+    letter-spacing: 0px;
+    color: #0A0102;
+    opacity: 1;
+    width: 600px;
+    margin-left: 28px;
 }

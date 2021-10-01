@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   page = 'allBooks';
   bookName:any;
   bid:any;
+  isBadgeHidden=true;
   userdetails=JSON.parse(localStorage.getItem('userDetails')!);
   constructor(private router:Router) { }
   ngOnInit(): void {

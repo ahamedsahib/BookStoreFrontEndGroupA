@@ -30,12 +30,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileComponent } from './Component/user-profile/user-profile.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {NgxPaginationModule} from 'ngx-pagination';
-<<<<<<< Updated upstream
-
-=======
+import {MatBadgeModule} from '@angular/material/badge';
 import { MyCartComponent } from './Component/my-cart/my-cart.component';
 import {MatExpansionModule} from '@angular/material/expansion';
->>>>>>> Stashed changes
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +71,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     NgbModule,
     MatRadioModule,
     NgxPaginationModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatBadgeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
