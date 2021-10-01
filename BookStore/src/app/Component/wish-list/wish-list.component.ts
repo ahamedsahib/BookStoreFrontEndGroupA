@@ -2,6 +2,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { BookServiceService } from 'src/app/Services/BookService/book-service.service';
 import { HomeComponent } from '../home/home.component';
+import { Router } from '@angular/router';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,13 +16,21 @@ export class WishListComponent implements OnInit {
 
   constructor(private home:HomeComponent,private bookService:BookServiceService , private snackBar:MatSnackBar) { }
   wishList:any = [];
+  check =false;
+  userdetails=JSON.parse(localStorage.getItem('userDetails')!);
   ngOnInit(): void {
     this.getBooks();
+    if(this.userdetails!=null)
+    {
+      this.check=true;
+    }
+
   }
   changePage()
   {
     this.home.page = 'allBooks';
   }
+  
   getBooks()
   {
     this.bookService.GetWishList().subscribe(
