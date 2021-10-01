@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BookServiceService } from 'src/app/Services/BookService/book-service.service';
 import { HomeComponent } from '../home/home.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-cart',
@@ -62,6 +63,7 @@ export class MyCartComponent implements OnInit {
   Checkout()
   {
     //pass cart
+    this.home.page='orderSuccessful';
   }
   showCustomerDetails = false;
   showOrderSummary = false;

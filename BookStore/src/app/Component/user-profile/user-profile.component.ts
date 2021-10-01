@@ -36,6 +36,7 @@ export class UserProfileComponent implements OnInit {
   OpenAddressForm=false;
   openAddressDetail=false;
   
+
   constructor(
     private userService: UserServiceService,
     private home: HomeComponent,

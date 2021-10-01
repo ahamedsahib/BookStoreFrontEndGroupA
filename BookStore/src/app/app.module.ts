@@ -33,7 +33,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {MatBadgeModule} from '@angular/material/badge';
 import { MyCartComponent } from './Component/my-cart/my-cart.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTableModule} from '@angular/material/table';
+import { OrderSuccessfullComponent } from './Component/order-successfull/order-successfull.component';
 import { MyOrderComponent } from './Component/my-order/my-order.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +49,7 @@ import { MyOrderComponent } from './Component/my-order/my-order.component';
     BookComponent,
     UserProfileComponent,
     MyCartComponent,
+    OrderSuccessfullComponent,
     MyOrderComponent
   ],
   imports: [
@@ -75,6 +79,7 @@ import { MyOrderComponent } from './Component/my-order/my-order.component';
     NgxPaginationModule,
     MatExpansionModule,
     MatBadgeModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

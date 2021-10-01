@@ -6,7 +6,6 @@ import { ResetPasswordComponent } from './Component/reset-password/reset-passwor
 import { HomeComponent } from './Component/home/home.component';
 import { GetBooksComponent } from './Component/get-books/get-books.component';
 import { BookComponent } from './Component/book/book.component';
-import { UserProfileComponent } from './Component/user-profile/user-profile.component';
 
  
 const routes: Routes = [ 
@@ -15,8 +14,7 @@ const routes: Routes = [
   { path:'resetPassword', component:ResetPasswordComponent},
   { path:'home', component:HomeComponent},
   { path:'getBooks', component:GetBooksComponent},
-  { path:'book', component:BookComponent},
-  { path:'userProfile', component:UserProfileComponent}
+  { path:'book', component:BookComponent}
 ];
 
 @NgModule({

@@ -55,7 +55,7 @@
                 <mat-icon mat-list-icon class="maticon" style="margin-right: 10px;">person_outline</mat-icon>
                 <h4 mat-line class="maticon">Profile</h4>
             </div>
-            <div class="matmenuIcons" style="margin-top: -10px;">
+            <div class="matmenuIcons" style="margin-top: -10px;" (click)="page='orders'">
                 <mat-icon mat-list-icon class="maticon" style="margin-right: 10px;">card_travel</mat-icon>
                 <h4 mat-line class="maticon">My Orders</h4>
             </div>
@@ -74,6 +74,8 @@
     <app-user-profile *ngIf="page=='userProfile'"></app-user-profile>
     <app-book [bid]="bid" *ngIf="page=='viewBook'"></app-book>
     <app-my-cart *ngIf="page=='myCart'"></app-my-cart>
+    <app-my-order *ngIf="page=='orders'"></app-my-order>
+    <app-order-successfull *ngIf="page=='orderSuccessful'"></app-order-successfull>
 </div>
 <div class="footer">
     CopyRight &copy; 2021 Cohort B private limited. All rights received
