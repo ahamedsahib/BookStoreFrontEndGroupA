@@ -65,6 +65,32 @@ export class BookComponent implements OnInit {
           });
       });
     }
+  }
+    AddToCart(book:any)
+  {
+    
+    if(this.userdetails == null)
+    {
+      this.snackBar.open(`You need to login First`, '', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left'
+      });
+      this.router.navigate(['/login']);
+    }
+    else
+    {
+      console.log(book,this.userdetails.customerId,"bc");
+      
+      this.bookService.AddToCart(book,this.userdetails.customerId).subscribe(
+        (result:any)=>{
+          this.snackBar.open(`${result.message}`, '', {
+            duration: 3000,
+            verticalPosition: 'bottom',
+            horizontalPosition: 'left'
+          });
+      });
+    }
     
   }
 

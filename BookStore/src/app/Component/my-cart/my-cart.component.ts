@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { BookServiceService } from 'src/app/Services/BookService/book-service.service';
 import { HomeComponent } from '../home/home.component';
 
@@ -9,11 +10,45 @@ import { HomeComponent } from '../home/home.component';
 })
 export class MyCartComponent implements OnInit {
 
-  constructor(private home:HomeComponent,private bookService:BookServiceService) { }
+  constructor(private home:HomeComponent,private bookService:BookServiceService,private snackBar:MatSnackBar) { }
+  CartList:any = [];
   ngOnInit(): void {
-    //get cart
+    this.getBooks();  
   }
 
+  getBooks()
+  {
+    this.bookService.GetCartItem().subscribe(
+      (result:any)=>{
+        this.CartList = result.data;
+        console.log(this.CartList);
+        
+    });
+  }
+  RemoveCartItem(id:any)
+  {
+    console.log(id);
+    this.bookService.RemoveCartItem(id).subscribe(
+      (result:any)=>{
+        this.snackBar.open(`Removed From Cart`, '', {
+          duration: 3000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        })
+    });
+  }
+  UpdateOrderCount(type:any,id:any)
+  {
+    console.log(id);
+    this.bookService.UpdateOrderCount(type,id).subscribe(
+      (result:any)=>{
+        this.snackBar.open(`One Book is added `, '', {
+          duration: 3000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        })
+    });
+  }
   PlaceOrder()
   {
     this.showCustomerDetails = true;
@@ -31,26 +66,6 @@ export class MyCartComponent implements OnInit {
   showCustomerDetails = false;
   showOrderSummary = false;
   showCart = true;
-  cartBooks:any=[
-    {
-      "image": "../../../assets/book.png",
-      "bookName": "Don't Make me Think",
-      "authorName": "Diwakar",
-      "rating":4.5,
-      "price":1200,
-      "bookCount":5,
-      "originalPrice":1500
-    },
-    {
-      "image": "../../../assets/book.png",
-      "bookName": "Don't Make me Think",
-      "authorName": "Diwakar",
-      "rating":4.5,
-      "price":1200,
-      "bookCount":5,
-      "originalPrice":1500
-    }
-  ]
   changePage()
   {
     this.home.page = 'allBooks';

@@ -22,6 +22,10 @@ export class BookServiceService {
   {
     return this.httpService.get(`${environment.baseUrl}/api/WishList/getwishlist?userId=${this.userdetails.customerId}`);
   }
+  GetCartItem()
+  {
+    return this.httpService.get(`${environment.baseUrl}/api/Cart/GetCartItem?userId=${this.userdetails.customerId}`);
+  }
   GetBookDetails(id:any)
   {
     return this.httpService.post(`${environment.baseUrl}/api/Book/GetBooks`,id);
@@ -35,10 +39,32 @@ export class BookServiceService {
     console.log("wishlist:"+params);
     return this.httpService.post(`${environment.baseUrl}/api/WishList/AddToWishList`,params);
   }
+  AddToCart(book:any,uid:any)
+  {
+    const params={
+      BookID:book.bookId,
+      UserId:uid,
+      BookOrderCount:1
+    }
+    console.log("wishlist:"+params);
+    return this.httpService.post(`${environment.baseUrl}/api/Cart/AddToCart`,params);
+  }
   RemoveFromWishList(wishListId:any)
   {
     console.log(wishListId,"remove from wishlist");
     
     return this.httpService.delete(`${environment.baseUrl}/api/WishList/RemoveFromWishList?wishListId=${wishListId}`);
+  }
+  RemoveCartItem(cartId:any)
+  {
+    return this.httpService.delete(`${environment.baseUrl}/api/Cart/RemoveFromCart?cartId=${cartId}`);
+  }
+  UpdateOrderCount(type:any,id:any)
+  {
+    const params={
+      CartID:id,
+      orderCountType:type
+    }
+    return this.httpService.put(`${environment.baseUrl}/api/Cart/UpadetOrderCount`,params);
   }
 }

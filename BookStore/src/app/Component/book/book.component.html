@@ -20,7 +20,7 @@
                 </div>
                 <div class="bookimageBottomButton">
                     <div class="buttons">
-                        <button type="submit" mat-raised-button class="actionButton addtobag">ADD TO BAG</button>
+                        <button type="submit" mat-raised-button class="actionButton addtobag" (click)="AddToCart(book)">ADD TO BAG</button>
                         <button type="submit" mat-raised-button class="actionButton wishlist" (click)="AddToWishList(book)">
                             <mat-icon>favorite</mat-icon> WISHLIST
                         </button>

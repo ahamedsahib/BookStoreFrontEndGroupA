@@ -13,6 +13,7 @@ export class MyOrderComponent implements OnInit {
     private home:HomeComponent,
     private bookService:BookServiceService
   ) { }
+  CartList:any = [];
 
   ngOnInit(): void {
   }
@@ -23,7 +24,7 @@ export class MyOrderComponent implements OnInit {
   }
   getBooks()
   {
-    this.bookService.GetWishList().subscribe(
+    this.bookService.GetCartItem().subscribe(
       (result:any)=>{
         
     });
