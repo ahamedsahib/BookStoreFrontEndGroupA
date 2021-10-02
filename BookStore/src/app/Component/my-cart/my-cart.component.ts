@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { BookServiceService } from 'src/app/Services/BookService/book-service.service';
 import { HomeComponent } from '../home/home.component';
 import { Router } from '@angular/router';
+import { DataSharingServiceService } from 'src/app/Services/DataSharing/data-sharing-service.service';
 
 @Component({
   selector: 'app-my-cart',
@@ -11,11 +12,23 @@ import { Router } from '@angular/router';
 })
 export class MyCartComponent implements OnInit {
 
-  constructor(private home:HomeComponent,private bookService:BookServiceService,private snackBar:MatSnackBar,private router:Router) { }
+  constructor(private home:HomeComponent,private bookService:BookServiceService,
+    private snackBar:MatSnackBar,
+    private router:Router,
+    private statusdata: DataSharingServiceService) { }
   CartList:any = [];
   OrderList:any=[];
+
   ngOnInit(): void {
     this.getBooks();  
+    this.statusdata.currentStatus.subscribe((status:boolean) => 
+    {
+      if(status)
+      {
+        this.statusdata.changeStatus(false);
+        this.getBooks();
+      }
+    })
   }
 
   getBooks()
@@ -37,7 +50,9 @@ export class MyCartComponent implements OnInit {
           verticalPosition: 'bottom',
           horizontalPosition: 'left'
         })
+        this.statusdata.changeStatus(true);
     });
+    
   }
   UpdateOrderCount(type:any,id:any)
   {
@@ -48,13 +63,25 @@ export class MyCartComponent implements OnInit {
           duration: 3000,
           verticalPosition: 'bottom',
           horizontalPosition: 'left'
-        })
+        });
+        this.statusdata.changeStatus(result.status);
     });
   }
   PlaceOrder()
   {
+    if(this.CartList.length!=0)
+    {
     this.showCustomerDetails = true;
     this.showCart = false;
+    }
+    else
+    {
+      this.snackBar.open(`No item in cart to place order `, '', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left'
+      });
+    }
   }
   confirmUserdeatils()
   {

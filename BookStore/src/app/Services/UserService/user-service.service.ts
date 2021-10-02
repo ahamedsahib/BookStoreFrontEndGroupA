@@ -54,15 +54,15 @@ export class UserServiceService {
   }
   EditAddress(data:any, addressId: any,userId:any){
     const params = {
-      addressId: addressId,
-      address: data.address,
-      city:data.city,
-      state:data.state,
-      type:data.type,
-      userId:userId
+      AddressId: addressId,
+      Address: data.address,
+      City:data.city,
+      State:data.state,
+      Type:data.type,
+      UserId:userId
     }
     console.log(params,"get address");
-    return this.httpService.post(`${environment.baseUrl}/api/User/EditAddress`,params);
+    return this.httpService.post(`${environment.baseUrl}/api/Address/EditAddress`,params);
   }
   EditUserDetails(data:any, userId:any){
     const params = {

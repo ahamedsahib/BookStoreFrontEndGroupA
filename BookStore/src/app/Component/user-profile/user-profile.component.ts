@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from 'src/app/Services/UserService/user-service.service';
 import { HomeComponent } from '../home/home.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DataSharingServiceService } from 'src/app/Services/DataSharing/data-sharing-service.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -40,7 +41,8 @@ export class UserProfileComponent implements OnInit {
   constructor(
     private userService: UserServiceService,
     private home: HomeComponent,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private statusdata: DataSharingServiceService
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +51,14 @@ export class UserProfileComponent implements OnInit {
     this.userData=this.userdetails;
     console.log(this.userData);
     this.getAddress();
+    this.statusdata.currentStatus.subscribe((status:boolean) => 
+    {
+      if(status)
+      {
+        this.statusdata.changeStatus(false);
+        this.getAddress();
+      }
+    })
   }
   
 open(address:any){
@@ -56,12 +66,6 @@ open(address:any){
   this.openAddressDetail=!this.openAddressDetail
 }
   getAddress(){
-    // this.userService.GetUserAddress(this.userdetails.customerId)
-    // .subscribe((result:any)=>{
-    //   console.log(result);
-    //   this.addressdetails = result.data[0];
-    //   //console.log(this.addressdetails);
-    // });
     this.addressdetails=this.ad;
     this.data=this.ad;
   }
@@ -83,7 +87,7 @@ open(address:any){
         verticalPosition: 'bottom',
         horizontalPosition: 'left'
       });
-      this.ngOnInit();
+      this.statusdata.changeStatus(true);
     },error => {  
       this.snackBar.open(`${error.error.message}`, '', {
         duration: 3000,
@@ -103,6 +107,8 @@ open(address:any){
         verticalPosition: 'bottom',
         horizontalPosition: 'left'
       });
+      this.statusdata.changeStatus(true);
+
     },error => {  
       this.snackBar.open(`${error.error.message}`, '', {
         duration: 3000,

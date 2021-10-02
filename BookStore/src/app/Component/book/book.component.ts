@@ -2,6 +2,7 @@ import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { BookServiceService } from 'src/app/Services/BookService/book-service.service';
+import { DataSharingServiceService } from 'src/app/Services/DataSharing/data-sharing-service.service';
 import { GetBooksComponent } from '../get-books/get-books.component';
 import { HomeComponent } from '../home/home.component';
 @Injectable({
@@ -18,7 +19,8 @@ export class BookComponent implements OnInit {
   bookId:any;
  book:any;
  userdetails=JSON.parse(localStorage.getItem('userDetails')!);
-  constructor(private home:HomeComponent,private snackBar:MatSnackBar,private getBook:GetBooksComponent,private bookService:BookServiceService,private router:Router) { }
+  constructor(private home:HomeComponent,private snackBar:MatSnackBar,private getBook:GetBooksComponent,private bookService:BookServiceService,private router:Router,
+    private statusdata: DataSharingServiceService) { }
   changePage()
   {
     this.home.page = 'allBooks';
@@ -30,6 +32,13 @@ export class BookComponent implements OnInit {
   {
     console.log(this.bid,"bookId in books");
     this.book = this.bid;
+    this.statusdata.currentStatus.subscribe((status:boolean) => 
+    {
+      if(status)
+      {
+        this.statusdata.changeStatus(false);
+      }
+    })
   }
   getBooks()
   {

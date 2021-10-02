@@ -1,5 +1,6 @@
 import { Component, Injectable, Input, OnInit, Type } from '@angular/core';
 import { BookServiceService } from 'src/app/Services/BookService/book-service.service';
+import { DataSharingServiceService } from 'src/app/Services/DataSharing/data-sharing-service.service';
 import { HomeComponent } from '../home/home.component';
 @Injectable({ 
   providedIn: 'root'
@@ -16,11 +17,22 @@ export class GetBooksComponent implements OnInit {
   defaultColor = "#FFF";
   display=1;
   res:any;
-  constructor(private bookService:BookServiceService,private home:HomeComponent) {
+  constructor(private bookService:BookServiceService,private home:HomeComponent,
+    private statusdata: DataSharingServiceService) {
    }
   ngOnInit(): void {
     this.getBooks();
     this.Search();
+    this.statusdata.currentStatus.subscribe((status:boolean) => 
+    {
+      if(status)
+      {
+      
+        this.statusdata.changeStatus(false);
+        this.getBooks();
+        this.Search();
+      }
+    })
     }
   books:any = [];
   returnedBooks:any = [];
@@ -49,6 +61,7 @@ export class GetBooksComponent implements OnInit {
         this.ChangeOrder(0);
     });
   }
+  
   ChangeOrder(num:any)
   {
     console.log(this.returnedBooks,"retbooks");

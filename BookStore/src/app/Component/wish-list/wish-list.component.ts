@@ -3,6 +3,7 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { BookServiceService } from 'src/app/Services/BookService/book-service.service';
 import { HomeComponent } from '../home/home.component';
 import { Router } from '@angular/router';
+import { DataSharingServiceService } from 'src/app/Services/DataSharing/data-sharing-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,11 @@ import { Router } from '@angular/router';
 })
 export class WishListComponent implements OnInit {
 
-  constructor(private home:HomeComponent,private bookService:BookServiceService , private snackBar:MatSnackBar) { }
+
+  constructor(private home:HomeComponent,private bookService:BookServiceService , 
+    private statusdata: DataSharingServiceService,
+    private snackBar:MatSnackBar) { }
+
   wishList:any = [];
   check =false;
   userdetails=JSON.parse(localStorage.getItem('userDetails')!);
@@ -24,7 +29,14 @@ export class WishListComponent implements OnInit {
     {
       this.check=true;
     }
-
+    this.statusdata.currentStatus.subscribe((status:boolean) => 
+    {
+      if(status)
+      {
+        this.statusdata.changeStatus(false);
+        this.getBooks();
+      }
+    })
   }
   changePage()
   {
@@ -50,28 +62,8 @@ export class WishListComponent implements OnInit {
           verticalPosition: 'bottom',
           horizontalPosition: 'left'
         });
-        
+        this.statusdata.changeStatus(true);
     });
     
   }
-  // wishList:any=[
-  //   {
-  //     "image": "../../../assets/book.png",
-  //     "bookName": "Don't Make me Think",
-  //     "authorName": "Diwakar",
-  //     "rating":4.5,
-  //     "price":1200,
-  //     "bookCount":5,
-  //     "originalPrice":1500
-  //   },
-  //   {
-  //     "image": "../../../assets/book.png",
-  //     "bookName": "Don't Make me Think",
-  //     "authorName": "Diwakar",
-  //     "rating":4.5,
-  //     "price":1200,
-  //     "bookCount":5,
-  //     "originalPrice":1500
-  //   }
-  // ]
 }
