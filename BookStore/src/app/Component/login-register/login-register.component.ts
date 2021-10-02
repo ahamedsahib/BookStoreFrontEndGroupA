@@ -111,6 +111,7 @@ getErrorMessageRegister(inputName:string) {
     .subscribe((result:any)=>{
       console.log(result);
         localStorage.setItem('userDetails',JSON.stringify(result.data));
+        localStorage.setItem('token',JSON.stringify(result.resultMessage));
         this.snackBar.open(`${result.message}`, '', {
           duration: 3000,
           verticalPosition: 'bottom',

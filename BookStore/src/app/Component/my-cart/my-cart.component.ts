@@ -11,8 +11,9 @@ import { Router } from '@angular/router';
 })
 export class MyCartComponent implements OnInit {
 
-  constructor(private home:HomeComponent,private bookService:BookServiceService,private snackBar:MatSnackBar) { }
+  constructor(private home:HomeComponent,private bookService:BookServiceService,private snackBar:MatSnackBar,private router:Router) { }
   CartList:any = [];
+  OrderList:any=[];
   ngOnInit(): void {
     this.getBooks();  
   }
@@ -62,8 +63,15 @@ export class MyCartComponent implements OnInit {
   }
   Checkout()
   {
-    //pass cart
-    this.home.page='orderSuccessful';
+    this.bookService.PlaceOrder(this.CartList).subscribe(
+      (result:any)=>{
+        this.snackBar.open(`Order is placed `, '', {
+          duration: 3000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+        this.router.navigate(['/Order-successfull']);
+    });
   }
   showCustomerDetails = false;
   showOrderSummary = false;
