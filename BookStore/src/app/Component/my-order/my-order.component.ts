@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { BookServiceService } from 'src/app/Services/BookService/book-service.service';
 import { HomeComponent } from '../home/home.component';
-
+@Injectable({
+  providedIn: 'root'
+})
 @Component({
   selector: 'app-my-order',
   templateUrl: './my-order.component.html',

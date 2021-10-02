@@ -55,33 +55,21 @@
                     <h1>Customer Feedback</h1>
                     <div class="customerfeedback">
                         <p style="font-weight: 450;">Overall rating</p>
-                        <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating><br>
+                        <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false" [(ngModel)]="starRating"></ngb-rating><br>
                         <textarea cdkTextareaAutosize placeholder="Write your review" class="noteTitle"
                             class="textarea"></textarea>
                         <div class="buttonContainer">
                             <button type="submit" mat-raised-button class="button">Submit</button>
                         </div>
                     </div>
-                    <div class="reviews">
+                    <div class="reviews" *ngFor="let review of reviews">
                         <div>
                             <mat-icon>account_circle</mat-icon>
                         </div>
                         <div style="margin-left:5px ;">
-                            <p class="username">Diwakar</p>
-                            <ngb-rating [max]="5" [(rate)]="Rating" [readonly]="true"></ngb-rating><br>
-                            <p>The book is amazing,I had a wonderful time reading books,i would suggest people reading
-                                my comments defenitley by reading books</p>
-                        </div>
-                    </div>
-                    <div class="reviews">
-                        <div>
-                            <mat-icon>account_circle</mat-icon>
-                        </div>
-                        <div style="margin-left:5px ;">
-                            <p class="username">Gayathri Sri</p>
-                            <ngb-rating [max]="5" [(rate)]="Rating" [readonly]="true"></ngb-rating><br>
-                            <p>The book is amazing,I had a wonderful time reading books,i would suggest people reading
-                                my comments defenitley by reading books</p>
+                            <p class="username">{{review.customerName}}</p>
+                            <ngb-rating [max]="5" [(rate)]="review.rating" [readonly]="true"></ngb-rating><br>
+                            <p>{{review.feedback}}</p>
                         </div>
                     </div>
                 </div>

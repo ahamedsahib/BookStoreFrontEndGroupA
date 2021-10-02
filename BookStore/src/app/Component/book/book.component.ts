@@ -26,7 +26,7 @@ export class BookComponent implements OnInit {
     this.home.page = 'allBooks';
   }
   Rating=3;
-  
+  reviews:any=[]
 
   ngOnInit(): void 
   {
@@ -39,6 +39,7 @@ export class BookComponent implements OnInit {
         this.statusdata.changeStatus(false);
       }
     })
+    this.GetFeedBack();
   }
   getBooks()
   {
@@ -100,6 +101,19 @@ export class BookComponent implements OnInit {
           });
       });
     }
+    
+  }
+
+  GetFeedBack()
+  {
+    this.bookService.GetCustomerFeedBack(this.book.bookId).subscribe((result:any)=>{
+      console.log(result.data,"getCustomer");
+      //console.log();
+      
+      this.reviews = result.data;
+      console.log(this.reviews);
+      
+    });
     
   }
 

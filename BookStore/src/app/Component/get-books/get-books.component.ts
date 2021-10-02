@@ -22,7 +22,7 @@ export class GetBooksComponent implements OnInit {
    }
   ngOnInit(): void {
     this.getBooks();
-    this.Search();
+    //this.Search();
     this.statusdata.currentStatus.subscribe((status:boolean) => 
     {
       if(status)
@@ -30,6 +30,17 @@ export class GetBooksComponent implements OnInit {
       
         this.statusdata.changeStatus(false);
         this.getBooks();
+        this.ngOnInit();
+        //this.bookName = "asdffs";
+        //this.Search();
+      }
+    })
+    this.statusdata.currentSearchStatus.subscribe((status:boolean) => 
+    {
+      if(status)
+      {
+      
+        this.statusdata.changeSearchStatus(false);
         this.Search();
       }
     })
@@ -47,9 +58,13 @@ export class GetBooksComponent implements OnInit {
   }
   Search()
   {
-    this.books = this.books.filter((res: { bookName: string; })=>{ 
-        return res.bookName.toLocaleLowerCase().match(this.bookName.toLocaleLowerCase());
-      });
+    console.log("seach");
+    console.log(this.bookName);
+   
+    this.books = this.books.filter((res:any)=>{ 
+          return res.bookName.toLowerCase().match(this.bookName);
+        });
+    
   }
 
   getBooks()

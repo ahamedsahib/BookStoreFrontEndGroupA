@@ -7,7 +7,7 @@
     </div>
     <div class="searchBar">
         <mat-form-field class="search" appearance="fill">
-            <input matInput placeholder="Search" [(ngModel)]="bookName">
+            <input matInput placeholder="Search" #code [(ngModel)]="bookName" (ngModelChange)="Search()">
             <mat-icon matPrefix style="margin: 0 10px;">search</mat-icon>
         </mat-form-field>
     </div>
@@ -69,7 +69,7 @@
     </div>
 </mat-menu>
 <div class="homeBody">
-    <app-get-books [bookName]="bookName" *ngIf="page=='allBooks'"></app-get-books>
+    <app-get-books [bookName]="code.value.toLowerCase()" *ngIf="page=='allBooks'"></app-get-books>
     <app-wish-list *ngIf="page=='wishList'"></app-wish-list>
     <app-user-profile *ngIf="page=='userProfile'"></app-user-profile>
     <app-book [bid]="bid" *ngIf="page=='viewBook'"></app-book>

@@ -10,8 +10,14 @@ export class DataSharingServiceService {
   private statusSource = new BehaviorSubject(false); // set default status
   currentStatus = this.statusSource.asObservable();
 
+  private searchStatus = new BehaviorSubject(false);
+  currentSearchStatus = this.searchStatus.asObservable();
 
   changeStatus(status: boolean) {
     this.statusSource.next(status)
+  }
+
+  changeSearchStatus(status: boolean) {
+    this.searchStatus.next(status)
   }
 }

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
-
+@Injectable({
+  providedIn: 'root'
+})
 @Component({
   selector: 'app-order-successfull',
   templateUrl: './order-successfull.component.html',

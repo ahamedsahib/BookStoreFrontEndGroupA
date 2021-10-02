@@ -73,4 +73,8 @@ export class BookServiceService {
   {
     return this.httpService.post(`${environment.baseUrl}/api/Order/PlaceOrders`,CartList,true,this.header);
   }
+  GetCustomerFeedBack(bookId:any)
+  {
+    return this.httpService.post(`${environment.baseUrl}/api/Book/GetFeedback?bookid=${bookId}`);
+  }
 }
