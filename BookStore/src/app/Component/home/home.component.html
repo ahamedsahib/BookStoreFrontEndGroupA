@@ -24,7 +24,7 @@
         </div>
         <div class="icon">
             <button mat-icon-button class="example-icon favorite-icon iconbutton" (click)="page='myCart'">
-                <mat-icon class="material-icons-outlined" style="font-size: 22px;color: #EDD8DA;" matBadge="8"
+                <mat-icon class="material-icons-outlined" style="font-size: 22px;color: #EDD8DA;" matBadge="{{cartlength}}"
                     matBadgeColor="warn" [matBadgeHidden]="isBadgeHidden">shopping_cart
                 </mat-icon><br>
                 <p class="noteTitle">cart</p>
@@ -77,6 +77,6 @@
     <app-my-order *ngIf="page=='orders'"></app-my-order>
     <app-order-successfull *ngIf="page=='orderSuccessful'"></app-order-successfull>
 </div>
-<div class="footer">
+<footer class="footer">
     CopyRight &copy; 2021 Cohort B private limited. All rights received
-</div>
+</footer>

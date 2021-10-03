@@ -55,11 +55,11 @@
                     <h1>Customer Feedback</h1>
                     <div class="customerfeedback">
                         <p style="font-weight: 450;">Overall rating</p>
-                        <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false" [(ngModel)]="starRating"></ngb-rating><br>
+                        <ngb-rating [max]="5" [(rate)]="starRating" [readonly]="false"></ngb-rating><br>
                         <textarea cdkTextareaAutosize placeholder="Write your review" class="noteTitle"
-                            class="textarea"></textarea>
+                            class="textarea" [(ngModel)]="feedback"></textarea>
                         <div class="buttonContainer">
-                            <button type="submit" mat-raised-button class="button">Submit</button>
+                            <button type="submit" mat-raised-button class="button" (click)="AddCustomerFeedBack();">Submit</button>
                         </div>
                     </div>
                     <div class="reviews" *ngFor="let review of reviews">

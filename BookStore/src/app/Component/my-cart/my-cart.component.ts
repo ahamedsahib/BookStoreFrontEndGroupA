@@ -10,6 +10,8 @@ import { DataSharingServiceService } from 'src/app/Services/DataSharing/data-sha
   templateUrl: './my-cart.component.html',
   styleUrls: ['./my-cart.component.scss']
 })
+
+
 export class MyCartComponent implements OnInit {
 
   constructor(private home:HomeComponent,private bookService:BookServiceService,
@@ -18,9 +20,11 @@ export class MyCartComponent implements OnInit {
     private statusdata: DataSharingServiceService) { }
   CartList:any = [];
   OrderList:any=[];
+  cartlength:any;
 
   ngOnInit(): void {
-    this.getBooks();  
+    this.getBooks(); 
+
     this.statusdata.currentStatus.subscribe((status:boolean) => 
     {
       if(status)
@@ -37,7 +41,7 @@ export class MyCartComponent implements OnInit {
       (result:any)=>{
         this.CartList = result.data;
         console.log(this.CartList);
-        
+        this.cartlength=this.CartList.length;
     });
   }
   RemoveCartItem(id:any)

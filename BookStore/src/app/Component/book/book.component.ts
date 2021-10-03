@@ -17,6 +17,8 @@ export class BookComponent implements OnInit {
   @Input() bid:any;
   starRating = 0; 
   bookId:any;
+  CustomerFeedbackList:any;
+  feedback:any;
  book:any;
  userdetails=JSON.parse(localStorage.getItem('userDetails')!);
   constructor(private home:HomeComponent,private snackBar:MatSnackBar,private getBook:GetBooksComponent,private bookService:BookServiceService,private router:Router,
@@ -32,14 +34,17 @@ export class BookComponent implements OnInit {
   {
     console.log(this.bid,"bookId in books");
     this.book = this.bid;
+    this.GetFeedBack();
+
     this.statusdata.currentStatus.subscribe((status:boolean) => 
     {
       if(status)
       {
         this.statusdata.changeStatus(false);
+        this.GetFeedBack();
+
       }
     })
-    this.GetFeedBack();
   }
   getBooks()
   {
@@ -52,7 +57,6 @@ export class BookComponent implements OnInit {
   }
   AddToWishList(book:any)
   {
-    
     if(this.userdetails == null)
     {
       this.snackBar.open(`You need to login First`, '', {
@@ -65,7 +69,6 @@ export class BookComponent implements OnInit {
     else
     {
       console.log(book,this.userdetails.customerId,"bc");
-      
       this.bookService.AddToWishList(book,this.userdetails.customerId).subscribe(
         (result:any)=>{
           this.snackBar.open(`${result.message}`, '', {
@@ -115,6 +118,29 @@ export class BookComponent implements OnInit {
       
     });
     
+  }
+  AddCustomerFeedBack()
+  {
+    console.log("Feedback",this.feedback);
+    console.log("rating",this.starRating);
+    let param=
+    {
+      feedback:this.feedback,
+      rating:this.starRating,
+      userId:this.userdetails.customerId,
+      bookId:this.book.bookId
+    }
+    this.bookService.AddCustomerFeedBack(param).subscribe((result:any)=>{
+      console.log(result.data,"getCustomer");
+      //console.log();
+      
+      this.reviews = result.data;
+      console.log(this.reviews);
+      this.statusdata.changeStatus(true);
+       this.feedback="";
+       this.starRating=0;
+    });
+
   }
 
 }

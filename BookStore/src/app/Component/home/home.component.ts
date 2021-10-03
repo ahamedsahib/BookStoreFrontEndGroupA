@@ -1,7 +1,7 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataSharingServiceService } from 'src/app/Services/DataSharing/data-sharing-service.service';
-import { GetBooksComponent } from '../get-books/get-books.component';
+import { BookServiceService } from 'src/app/Services/BookService/book-service.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,16 +13,19 @@ import { GetBooksComponent } from '../get-books/get-books.component';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
   open=false;
   hide=true;
   page = 'allBooks';
   bookName:any;
   bid:any;
   isBadgeHidden=true;
+  cartlength:any;
+  CartList: any;
+
   userdetails=JSON.parse(localStorage.getItem('userDetails')!);
-  constructor(private router:Router,private statusdata: DataSharingServiceService) { }
+  constructor(private router:Router,private statusdata: DataSharingServiceService,private bookService:BookServiceService) { }
   ngOnInit(): void {
+     this.getBooks();
   }
 show(){
   this.open=!this.open;
@@ -47,4 +50,17 @@ Search()
   }
   
 }
+getBooks()
+  {
+    this.bookService.GetCartItem().subscribe(
+      (result:any)=>{
+        this.CartList = result.data;
+        this.cartlength=this.CartList.length;
+        if(this.cartlength >=1)
+        {
+            this.isBadgeHidden=false;
+            console.log("cart length:"+this.cartlength)
+        }
+    });
+  }
 }

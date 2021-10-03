@@ -123,4 +123,5 @@ open(address:any){
     this.uniqueAddress=address;
     this.openAddressDetail=!this.openAddressDetail
   }
+
 }
