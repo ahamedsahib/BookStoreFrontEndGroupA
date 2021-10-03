@@ -35,19 +35,28 @@ export class MyCartComponent implements OnInit {
   userData:any = [];
   OpenAddressForm=false;
   openAddressDetail=false;
-  
+  check=false;
 
   ngOnInit(): void {
     this.getBooks(); 
-
+    var user=JSON.parse(localStorage.getItem('userDetails')!);
+    this.userdetails=user;
+    this.userData=this.userdetails;
+    this.getAddress();
+    if(this.userdetails!=null)
+    {
+      this.check=true;
+    }
     this.statusdata.currentStatus.subscribe((status:boolean) => 
     {
       if(status)
       {
         this.statusdata.changeStatus(false);
         this.getBooks();
+        this.getAddress()
       }
     })
+    
   }
 
   getBooks()
@@ -78,11 +87,6 @@ export class MyCartComponent implements OnInit {
     console.log(id);
     this.bookService.UpdateOrderCount(type,id).subscribe(
       (result:any)=>{
-        this.snackBar.open(`One Book is added `, '', {
-          duration: 3000,
-          verticalPosition: 'bottom',
-          horizontalPosition: 'left'
-        });
         this.statusdata.changeStatus(result.status);
     });
   }
@@ -148,6 +152,7 @@ export class MyCartComponent implements OnInit {
         verticalPosition: 'bottom',
         horizontalPosition: 'left'
       });
+      this.openAddressDetail=!this.openAddressDetail;
       this.statusdata.changeStatus(true);
 
     },error => {  
@@ -166,12 +171,14 @@ export class MyCartComponent implements OnInit {
   }
 
   Cancel(){
-    this.data = this.addressdetails;
+    // this.data = this.addressdetails;
     this.openAddressDetail=!this.openAddressDetail;
     this.statusdata.changeStatus(true);
   }
+
   Close(){
-    this.OpenAddressForm=false;
+    this.updateAddress=[];
+    this.OpenAddressForm=false; 
     this.statusdata.changeStatus(true);
   }
 
@@ -186,6 +193,8 @@ export class MyCartComponent implements OnInit {
         verticalPosition: 'bottom',
         horizontalPosition: 'left'
       });
+      this.updateAddress=[];
+      this.OpenAddressForm=false;
       this.statusdata.changeStatus(true);
 
     },error => {  

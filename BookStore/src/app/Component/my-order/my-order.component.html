@@ -7,20 +7,20 @@
         <mat-card class="orderCard" *ngFor="let book of order">
             <div class="orderBook">
                 <span>
-                    <img src="{{book.image}}" style="margin: 10px;" />
+                    <img src="{{book.books.image}}" class="image" />
                 </span>
                 <div class="bookContent">
-                    <p class="bookTitle">{{book.bookName}}</p>
-                    <p class="bookAuthor">by {{book.authorName}}</p>
+                    <p class="bookTitle">{{book.books.bookName}}</p>
+                    <p class="bookAuthor">by {{book.books.authorName}}</p>
                     <span class="price">
-                        <h2>₹&nbsp;{{book.price}}</h2>
-                        <p class="strike"><s>₹&nbsp;{{book.originalPrice}}</s></p>
+                        <h2>₹&nbsp;{{book.books.price}}</h2>
+                        <p class="strike"><s>₹&nbsp;{{book.books.originalPrice}}</s></p>
                     </span>
                 </div>
             </div>
             <div class="orderDate">
                 <mat-icon>circle</mat-icon>
-                <p>Order Placed on May 21</p>
+                <p>Order Placed on {{book.dateOfOrder}}</p>
             </div>
         </mat-card>
     </div>

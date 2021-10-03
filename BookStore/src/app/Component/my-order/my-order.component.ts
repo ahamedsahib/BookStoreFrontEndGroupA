@@ -16,8 +16,10 @@ export class MyOrderComponent implements OnInit {
     private bookService:BookServiceService
   ) { }
   CartList:any = [];
+  order:any=[];
 
   ngOnInit(): void {
+    this.getBooks();
   }
 
   changePage()
@@ -26,30 +28,31 @@ export class MyOrderComponent implements OnInit {
   }
   getBooks()
   {
-    this.bookService.GetCartItem().subscribe(
+    this.bookService.GetOrderItem().subscribe(
       (result:any)=>{
-        
+        console.log(result.data);
+        this.order=result.data;
     });
   }
-  order:any=[
-    {
-      "image": "../../../assets/book.png",
-      "bookName": "Don't Make me Think",
-      "authorName": "Diwakar",
-      "rating":4.5,
-      "price":1200,
-      "bookCount":5,
-      "originalPrice":1500
-    },
-    {
-      "image": "../../../assets/book.png",
-      "bookName": "Don't Make me Think",
-      "authorName": "Diwakar",
-      "rating":4.5,
-      "price":1200,
-      "bookCount":5,
-      "originalPrice":1500
-    }
-  ]
+  // order:any=[
+  //   {
+  //     "image": "../../../assets/book.png",
+  //     "bookName": "Don't Make me Think",
+  //     "authorName": "Diwakar",
+  //     "rating":4.5,
+  //     "price":1200,
+  //     "bookCount":5,
+  //     "originalPrice":1500
+  //   },
+  //   {
+  //     "image": "../../../assets/book.png",
+  //     "bookName": "Don't Make me Think",
+  //     "authorName": "Diwakar",
+  //     "rating":4.5,
+  //     "price":1200,
+  //     "bookCount":5,
+  //     "originalPrice":1500
+  //   }
+  // ]
 }
 

@@ -16,22 +16,6 @@ export class UserProfileComponent implements OnInit {
   index:any;
   addressdetails:any;
   uniqueAddress:any;
-  // ad= [
-  //   {
-  //     "addressId":1,
-  //     "type":"Home",
-  //     "address":"Bridze labz Solutions LLP No42,14th Main Cross Street,15th Cross Street, Sector4,Opp to BDA complex near to me,Kumarkopam street,HLS Layout,Bangalore",
-  //     "city":"Bangalore",
-  //     "state":"Karnataka"
-  //   },
-  //   {
-  //     "addressId":2,
-  //     "type":"Work",
-  //     "address":"Bridze labz Solutions LLP No42,14th Main Cross Street,15th Cross Street, Sector4,Opp to BDA complex near to me,Kumarkopam street,HLS Layout,Bangalore",
-  //     "city":"Broadway",
-  //     "state":"Chennai"
-  //   }
-  // ];
   updateAddress:any=[];
   data:any = [];
   userData:any = [];

@@ -81,4 +81,7 @@ export class BookServiceService {
   {
     return this.httpService.post(`${environment.baseUrl}/api/Book/AddCustomerFeedBack`,param,true,this.header);
   }
+  GetOrderItem(){
+    return this.httpService.get(`${environment.baseUrl}/api/Order/getorderlist?userId=${this.userdetails.customerId}`);
+  }
 }
