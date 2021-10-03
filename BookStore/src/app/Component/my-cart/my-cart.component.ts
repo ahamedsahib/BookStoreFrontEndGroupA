@@ -4,6 +4,7 @@ import { BookServiceService } from 'src/app/Services/BookService/book-service.se
 import { HomeComponent } from '../home/home.component';
 import { Router } from '@angular/router';
 import { DataSharingServiceService } from 'src/app/Services/DataSharing/data-sharing-service.service';
+import { UserServiceService } from 'src/app/Services/UserService/user-service.service';
 
 @Component({
   selector: 'app-my-cart',
@@ -17,10 +18,24 @@ export class MyCartComponent implements OnInit {
   constructor(private home:HomeComponent,private bookService:BookServiceService,
     private snackBar:MatSnackBar,
     private router:Router,
-    private statusdata: DataSharingServiceService) { }
+    private statusdata: DataSharingServiceService,
+    private userService: UserServiceService) { }
+
   CartList:any = [];
   OrderList:any=[];
   cartlength:any;
+  userDisable = true;
+  addressDisable = true;
+  userdetails:any;
+  index:any;
+  addressdetails:any;
+  uniqueAddress:any;
+  updateAddress:any=[];
+  data:any = [];
+  userData:any = [];
+  OpenAddressForm=false;
+  openAddressDetail=false;
+  
 
   ngOnInit(): void {
     this.getBooks(); 
@@ -107,9 +122,79 @@ export class MyCartComponent implements OnInit {
   showCustomerDetails = false;
   showOrderSummary = false;
   showCart = true;
+  
+
+  getAddress()
+  {
+    this.userService.GetUserAddress(this.userdetails.customerId)
+    .subscribe((result:any)=>{
+      console.log(result);
+      this.data=result.data;
+    });
+  }
   changePage()
   {
     this.home.page = 'allBooks';
+  }
+
+
+  
+  EditAddress(){
+    this.userService.EditAddress(this.uniqueAddress, this.uniqueAddress.addressId,this.userdetails.customerId)
+    .subscribe((result:any)=>{
+      console.log(result);
+      this.snackBar.open(`${result.message}`, '', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left'
+      });
+      this.statusdata.changeStatus(true);
+
+    },error => {  
+      this.snackBar.open(`${error.error.message}`, '', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left'
+      });
+    })
+  }
+  showAddressDetails(address:any,i:any)
+  {
+    this.index=i;
+    this.uniqueAddress=address;
+    this.openAddressDetail=!this.openAddressDetail
+  }
+
+  Cancel(){
+    this.data = this.addressdetails;
+    this.openAddressDetail=!this.openAddressDetail;
+    this.statusdata.changeStatus(true);
+  }
+  Close(){
+    this.OpenAddressForm=false;
+    this.statusdata.changeStatus(true);
+  }
+
+
+  AddAddress(){
+    console.log(this.updateAddress);
+    this.userService.addAddress(this.updateAddress,this.userdetails.customerId)
+    .subscribe((result:any)=>{
+      console.log(result);
+      this.snackBar.open(`${result.message}`, '', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left'
+      });
+      this.statusdata.changeStatus(true);
+
+    },error => {  
+      this.snackBar.open(`${error.error.message}`, '', {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left'
+      });
+    })
   }
 
 }

@@ -50,7 +50,7 @@ export class UserServiceService {
     return this.httpService.put(`${environment.baseUrl}/api/User/resetpassword`,params);
   }
   GetUserAddress(userId:any){
-    return this.httpService.get(`${environment.baseUrl}/api/User/getUserAddress?userId=${userId}`);
+    return this.httpService.get(`${environment.baseUrl}/api/Address/getUserAddress?userId=${userId}`);
   }
   EditAddress(data:any, addressId: any,userId:any){
     const params = {
@@ -73,5 +73,15 @@ export class UserServiceService {
       password:data.password
     }
     return this.httpService.post(`${environment.baseUrl}/api/User/EditUserDetails`,params);
+  }
+  addAddress(data:any, userId:any){
+    const params = {
+      Address: data.address,
+      City:data.city,
+      State:data.state,
+      Type:data.type,
+      UserId:userId
+    }
+    return this.httpService.post(`${environment.baseUrl}/api/Address/AddUserAddress`,params);
   }
 }
