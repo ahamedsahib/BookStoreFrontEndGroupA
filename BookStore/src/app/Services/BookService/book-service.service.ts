@@ -39,6 +39,7 @@ export class BookServiceService {
       UserId:uid
     }
     console.log("wishlist:"+params);
+    console.log("token:"+this.header);
     return this.httpService.post(`${environment.baseUrl}/api/WishList/AddToWishList`,params,true,this.header);
   }
   AddToCart(book:any,uid:any)

@@ -4,7 +4,6 @@
             <h1>Books</h1>
             <p style="color:#BEBEBE">&nbsp;({{books.length}} items)</p>
         </span>
-        <span>{{bookName}}</span>
         <span>
             <select name="sort" id="sort" class="sortTag" #sel (change)="ChangeOrder(sel.value)">
                 <option [disabled]="true">Sort by relevance</option>

@@ -33,6 +33,7 @@ show(){
 Logout()
 {
   localStorage.removeItem('userDetails');
+  localStorage.removeItem('token');
   this.router.navigate(['/login']);
 }
 Search()

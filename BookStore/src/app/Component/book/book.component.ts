@@ -29,7 +29,9 @@ export class BookComponent implements OnInit {
   }
   Rating=3;
   reviews:any=[]
-
+  
+  outColor="#E8E8E8";
+  defaultColor = "#FFF";
   ngOnInit(): void 
   {
     console.log(this.bid,"bookId in books");
@@ -46,6 +48,7 @@ export class BookComponent implements OnInit {
       }
     })
   }
+  
   getBooks()
   {
     this.bookService.GetBookDetails(this.bid).subscribe(
