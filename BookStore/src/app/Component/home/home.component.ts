@@ -26,6 +26,14 @@ export class HomeComponent implements OnInit {
   constructor(private router:Router,private statusdata: DataSharingServiceService,private bookService:BookServiceService) { }
   ngOnInit(): void {
      this.getBooks();
+     this.statusdata.currentStatus.subscribe((status:boolean) => 
+      {
+        if(status)
+        {
+          this.statusdata.changeStatus(false);
+          this.getBooks();
+        }
+      })
   }
 show(){
   this.open=!this.open;
@@ -34,7 +42,8 @@ Logout()
 {
   localStorage.removeItem('userDetails');
   localStorage.removeItem('token');
-  this.router.navigate(['/login']);
+  this.router.navigate(['/home']);
+  this.statusdata.changeStatus(true);
 }
 Search()
 {

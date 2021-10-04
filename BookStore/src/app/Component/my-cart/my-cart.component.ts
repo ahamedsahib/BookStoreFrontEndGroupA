@@ -36,13 +36,14 @@ export class MyCartComponent implements OnInit {
   OpenAddressForm=false;
   openAddressDetail=false;
   check=false;
-
+  price = 0;
   ngOnInit(): void {
     this.getBooks(); 
     var user=JSON.parse(localStorage.getItem('userDetails')!);
     this.userdetails=user;
     this.userData=this.userdetails;
     this.getAddress();
+    
     if(this.userdetails!=null)
     {
       this.check=true;
@@ -53,7 +54,8 @@ export class MyCartComponent implements OnInit {
       {
         this.statusdata.changeStatus(false);
         this.getBooks();
-        this.getAddress()
+        this.getAddress();
+        this.GetTotalPrice();
       }
     })
     
@@ -67,6 +69,18 @@ export class MyCartComponent implements OnInit {
         console.log(this.CartList);
         this.cartlength=this.CartList.length;
     });
+  }
+  GetTotalPrice()
+  {
+    console.log("Get total");
+    console.log(this.CartList,"cartlist");
+    this.price = 0;
+    this.CartList.forEach((x:any) => {
+      this.price = this.price + (x.bookOrderCount * x.books.price);
+      console.log(this.price,"price");
+    });
+    console.log(this.price,"price");
+    
   }
   RemoveCartItem(id:any)
   {
@@ -110,6 +124,7 @@ export class MyCartComponent implements OnInit {
   {
     this.showCustomerDetails = false;
     this.showOrderSummary = true;
+    this.GetTotalPrice();
   }
   Checkout()
   {

@@ -15,17 +15,30 @@ import { HomeComponent } from '../home/home.component';
 })
 export class BookComponent implements OnInit {
   @Input() bid:any;
+  @Input() cartItems:any;
   starRating = 0; 
   bookId:any;
   CustomerFeedbackList:any;
   feedback:any;
- book:any;
- userdetails=JSON.parse(localStorage.getItem('userDetails')!);
+  book:any;
+  bookPresent:any;
+  //checkBook:boolean;
+  userdetails=JSON.parse(localStorage.getItem('userDetails')!);
   constructor(private home:HomeComponent,private snackBar:MatSnackBar,private getBook:GetBooksComponent,private bookService:BookServiceService,private router:Router,
     private statusdata: DataSharingServiceService) { }
   changePage()
   {
     this.home.page = 'allBooks';
+  }
+  CheckBookInCart()
+  {
+    console.log("check");
+    this.bookPresent =  this.cartItems.find((x:any) => x.bookID == this.bid.bookId);
+    if(this.bookPresent !=null)
+    {
+      
+    }
+    
   }
   Rating=3;
   reviews:any=[]
@@ -37,14 +50,16 @@ export class BookComponent implements OnInit {
     console.log(this.bid,"bookId in books");
     this.book = this.bid;
     this.GetFeedBack();
-
+    console.log(this.cartItems,"cartItems");
+    this.CheckBookInCart();
     this.statusdata.currentStatus.subscribe((status:boolean) => 
     {
       if(status)
       {
         this.statusdata.changeStatus(false);
         this.GetFeedBack();
-
+        this.CheckBookInCart();
+        this.getBooks();
       }
     })
   }
@@ -82,33 +97,34 @@ export class BookComponent implements OnInit {
       });
     }
   }
-    AddToCart(book:any)
+AddToCart(book:any)
+{
+  
+  if(this.userdetails == null)
   {
-    
-    if(this.userdetails == null)
-    {
-      this.snackBar.open(`You need to login First`, '', {
-        duration: 3000,
-        verticalPosition: 'bottom',
-        horizontalPosition: 'left'
-      });
-      this.router.navigate(['/login']);
-    }
-    else
-    {
-      console.log(book,this.userdetails.customerId,"bc");
-      
-      this.bookService.AddToCart(book,this.userdetails.customerId).subscribe(
-        (result:any)=>{
-          this.snackBar.open(`${result.message}`, '', {
-            duration: 3000,
-            verticalPosition: 'bottom',
-            horizontalPosition: 'left'
-          });
-      });
-    }
-    
+    this.snackBar.open(`You need to login First`, '', {
+      duration: 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'left'
+    });
+    this.router.navigate(['/login']);
   }
+  else
+  {
+    console.log(book,this.userdetails.customerId,"bc");
+    
+    this.bookService.AddToCart(book,this.userdetails.customerId).subscribe(
+      (result:any)=>{
+        this.snackBar.open(`${result.message}`, '', {
+          duration: 3000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+        this.statusdata.changeStatus(true);
+    });
+  }
+  
+}
 
   GetFeedBack()
   {

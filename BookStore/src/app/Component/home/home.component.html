@@ -17,9 +17,8 @@
                 (click)="show()">
                 <mat-icon class="material-icons-outlined" style="font-size: 27px;  color: #FFFF;
                 font-weight: light;">person_outline</mat-icon><br>
-                <p class="noteTitle" style="margin-left:-14px;">{{userdetails != null?
+                <p class="noteTitle">{{userdetails != null?
                     userdetails.customerName:'Profile'}}</p><br>
-                <div class="bottom" *ngIf="open"></div>
             </button>
         </div>
         <div class="icon">
@@ -72,7 +71,7 @@
     <app-get-books [bookName]="code.value.toLowerCase()" *ngIf="page=='allBooks'"></app-get-books>
     <app-wish-list *ngIf="page=='wishList'"></app-wish-list>
     <app-user-profile *ngIf="page=='userProfile'"></app-user-profile>
-    <app-book [bid]="bid" *ngIf="page=='viewBook'"></app-book>
+    <app-book [bid]="bid" [cartItems] = "CartList" *ngIf="page=='viewBook'"></app-book>
     <app-my-cart *ngIf="page=='myCart'"></app-my-cart>
     <app-my-order *ngIf="page=='orders'"></app-my-order>
     <app-order-successfull *ngIf="page=='orderSuccessful'"></app-order-successfull>

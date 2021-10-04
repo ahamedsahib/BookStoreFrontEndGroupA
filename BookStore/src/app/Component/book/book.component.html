@@ -20,7 +20,7 @@
                 </div>
                 <div class="bookimageBottomButton">
                     <div class="buttons">
-                        <button type="submit" mat-raised-button class="actionButton addtobag" (click)="AddToCart(book)" *ngIf="book.bookCount!=0" >ADD TO BAG</button>
+                        <button type="submit" mat-raised-button class="actionButton addtobag" (click)="AddToCart(book)" *ngIf="book.bookCount!=0" >{{bookPresent==null?'ADD TO BAG':'GO TO CART'}}</button>
                         <button type="submit" mat-raised-button class="actionButton addtobag" *ngIf="book.bookCount==0">NOTIFY ME</button>
                         <button type="submit" mat-raised-button class="actionButton wishlist" (click)="AddToWishList(book)">
                             <mat-icon>favorite</mat-icon> WISHLIST
