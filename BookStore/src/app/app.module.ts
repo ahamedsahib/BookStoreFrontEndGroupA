@@ -37,6 +37,9 @@ import {MatTableModule} from '@angular/material/table';
 import { OrderSuccessfullComponent } from './Component/order-successfull/order-successfull.component';
 import { MyOrderComponent } from './Component/my-order/my-order.component';
 import { AdminDashboardComponent } from './Component/admin-dashboard/admin-dashboard.component';
+import { EditBookComponent } from './Component/edit-book/edit-book.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DeleteNoteComponent } from './Component/delete-note/delete-note.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,9 @@ import { AdminDashboardComponent } from './Component/admin-dashboard/admin-dashb
     MyCartComponent,
     OrderSuccessfullComponent,
     MyOrderComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    EditBookComponent,
+    DeleteNoteComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +86,8 @@ import { AdminDashboardComponent } from './Component/admin-dashboard/admin-dashb
     NgxPaginationModule,
     MatExpansionModule,
     MatBadgeModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

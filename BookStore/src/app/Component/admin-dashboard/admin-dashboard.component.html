@@ -43,11 +43,22 @@
                         </span>
                     </span>
                     <span class="price">
-                        <p>₹&nbsp;{{book.price}}</p>
-                        <p class="strike"><s>₹.&nbsp;{{book.originalPrice}}</s></p>
+                        <span class="bookPrice">
+                            <p>₹&nbsp;{{book.price}}</p>
+                            <p class="strike">&nbsp;<s>₹.&nbsp;{{book.originalPrice}}</s></p>
+                        </span>
+                        <span class="bookIcons">
+                            <button mat-icon-button class="example-icon" (click)="editBook(book)">
+                                <mat-icon class="material-icons-outlined" style="color:#A03037" matTooltip="Edit" >edit</mat-icon>
+                            </button>
+                            <button mat-icon-button class="example-icon" (click)="deleteBook(book)">
+                                <mat-icon class="material-icons-outlined" style="color:#A03037" matTooltip="Delete">delete</mat-icon>
+                            </button>
+                        </span>
                     </span>
                 </div>
             </mat-card>
+            
         </div>
     </div>
     <div class="paginator">

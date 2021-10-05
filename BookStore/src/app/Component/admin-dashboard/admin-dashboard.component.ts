@@ -1,8 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { BookServiceService } from 'src/app/Services/BookService/book-service.service';
 import { DataSharingServiceService } from 'src/app/Services/DataSharing/data-sharing-service.service';
+import { DeleteNoteComponent } from '../delete-note/delete-note.component';
+import { EditBookComponent } from '../edit-book/edit-book.component';
 import { HomeComponent } from '../home/home.component';
+
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -21,9 +25,10 @@ export class AdminDashboardComponent implements OnInit {
   books: any = [];
   arr: any = [];
   bId: any;
+  editable = false;
 
   constructor(private router: Router, private bookService: BookServiceService, private home: HomeComponent,
-    private statusdata: DataSharingServiceService) { }
+    private statusdata: DataSharingServiceService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getBooks();
@@ -78,25 +83,17 @@ export class AdminDashboardComponent implements OnInit {
       return result.data.length;
     });
   }
-  // ChangeOrder(num:any)
-  // {
-  //   console.log(this.returnedBooks,"retbooks");
-  //   if(num==0)
-  //   {
-  //     this.books = this.returnedBooks;
-  //   }
-  //   else if(num==1)
-  //   {
-  //     this.books = this.returnedBooks.sort((a:any, b:any) => (a.price < b.price ? -1 : 1));
-  //   }
-  //   else if(num==2){
-  //     this.books = this.returnedBooks.sort((a:any, b:any) => (a.price > b.price ? -1 : 1));
-  //   }
-  //   else{
-  //     this.books = this.returnedBooks.reverse();
-  //   }
-  //   console.log(this.returnedBooks,"after sort");
-
-  // }
+  editBook(book:any) {
+    this.dialog.open(EditBookComponent, {
+      panelClass: 'dialog-container-custom-edit',
+      data: book
+    });
+  }
+  deleteBook(book:any) {
+    this.dialog.open(DeleteNoteComponent, {
+      panelClass: 'dialog-container-custom-delete',
+      data: book
+    });
+  }
 
 }

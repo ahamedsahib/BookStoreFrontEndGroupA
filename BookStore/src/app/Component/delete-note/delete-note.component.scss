@@ -1,0 +1,19 @@
+::ng-deep .dialog-container-custom-delete .mat-dialog-container 
+{
+    width: 500px;
+    height: 180px;
+    border-radius: 7px;
+    padding: 0px 0px 0px 0px!important;
+}
+.deleteBook{
+    padding: 10px 10px 0px 10px;
+}
+.bottom{
+    margin-top: 90px;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
