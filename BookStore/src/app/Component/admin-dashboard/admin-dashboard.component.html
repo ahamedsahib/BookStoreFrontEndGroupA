@@ -1,1 +1,19 @@
-<p>admin-dashboard works!</p>
+<mat-toolbar class="ToolBar">
+    <div class="header">
+        <div class="menu" style="margin-top: 5px;cursor: pointer;" >
+            <img src="../../../assets/education.svg" class="image">
+            <mat-card-title style="margin-left: 5px;margin-top: -2px;">
+                <span style="color: #FFFFFF;font-weight:normal;">Bookstore</span>
+            </mat-card-title>
+        </div>
+        <div class="endIcons">
+            <div class="icon">
+                <button mat-icon-button class="example-icon favorite-icon iconbutton" (click)="Logout()">
+                    <mat-icon class="material-icons-outlined" style="font-size: 22px;color: #EDD8DA;" >logout
+                    </mat-icon><br>
+                    <p class="noteTitle">logout</p>
+                </button>
+            </div>
+        </div>
+    </div>
+</mat-toolbar>

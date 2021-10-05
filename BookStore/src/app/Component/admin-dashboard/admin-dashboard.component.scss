@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");
+
+mat-toolbar{
+    display: flex;
+}
+.ToolBar{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #A03037;
+    z-index: 1;
+}
+.image{
+    height:30px;
+    margin-bottom: 11px;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+}
+.icon{
+    border:0.5px solid #8F2B2F;
+    border-radius: unset;
+    width: 99px;
+    height: 59px;
+    display: flex;
+    justify-content: center;
+}
+.endIcons{
+    display: flex;
+    flex-direction: row;
+}
+.iconbutton {
+        padding: 9px;
+        width: -23px;
+        height: -23px;
+        font-size: 15px;
+        line-height: 22px;
+        display: flex;
+        justify-content: center;
+}
+.noteTitle{
+    color: #FFFF;
+    font-weight: light;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    background-color: #A03037;
+    z-index: 1;
+}
