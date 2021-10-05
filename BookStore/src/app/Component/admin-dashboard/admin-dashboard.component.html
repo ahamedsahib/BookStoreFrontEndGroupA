@@ -23,9 +23,10 @@
             <h1>Books</h1>
             <p style="color:#BEBEBE">&nbsp;({{books.length}} items)</p>
         </span>
-        <!-- <span>
-           
-        </span> -->
+        <span>
+            <button type="submit" mat-raised-button class="button" 
+            class="AddButton"><mat-icon class="addIcon">add</mat-icon>Add Book</button>   
+        </span>
     </div>
     <div class="allBooks">
         <div class="book" *ngFor="let book of books | paginate: { itemsPerPage: 12, currentPage: p }" (click)="ViewBook(book)">
