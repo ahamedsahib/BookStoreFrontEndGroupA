@@ -20,6 +20,7 @@ export class LoginRegisterComponent implements OnInit {
   RegisterEmailExists:any;
   hide = true;
   backColor = "#777777";
+  isChecked = false;
   changeColor()
   {
     this.backColor = "#ACACAC";
@@ -35,6 +36,9 @@ export class LoginRegisterComponent implements OnInit {
      EmailId: new FormControl('',[Validators.required, Validators.email]),
       Password:new FormControl('',[Validators.required, Validators.pattern('^.*(?=.{8,})(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$')])
     });
+  }
+  onChange(){
+    this.isChecked = !this.isChecked;
   }
   getErrorMessage(inputName:string) {
     let minLen = inputName=="Password"?8:3;
@@ -106,8 +110,8 @@ getErrorMessageRegister(inputName:string) {
   }
   Login()
   {
-    console.log(this.LoginForm.value);
-    this.userService.Login(this.LoginForm.value)
+    console.log(this.LoginForm.value, this.isChecked);
+    this.userService.Login(this.LoginForm.value, this.isChecked)
     .subscribe((result:any)=>{
       console.log(result);
         localStorage.setItem('userDetails',JSON.stringify(result.data));

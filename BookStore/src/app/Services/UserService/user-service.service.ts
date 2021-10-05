@@ -23,11 +23,12 @@ export class UserServiceService {
     console.log(params);
     return this.httpService.post(`${environment.baseUrl}/api/User/register`,params);
   }
-  Login(data:any)
+  Login(data:any, admin:any)
   {
     const params = {
       Email: data.EmailId,
-      Password: data.Password
+      Password: data.Password,
+      IsAdmin:admin
     }
     console.log(params);
     return this.httpService.post(`${environment.baseUrl}/api/User/login`,params);
