@@ -36,6 +36,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
 import { OrderSuccessfullComponent } from './Component/order-successfull/order-successfull.component';
 import { MyOrderComponent } from './Component/my-order/my-order.component';
+import { AdminDashboardComponent } from './Component/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { MyOrderComponent } from './Component/my-order/my-order.component';
     UserProfileComponent,
     MyCartComponent,
     OrderSuccessfullComponent,
-    MyOrderComponent
+    MyOrderComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

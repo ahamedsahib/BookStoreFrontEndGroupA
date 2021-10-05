@@ -134,7 +134,7 @@ AddToCart(book:any)
       
       this.reviews = result.data;
       console.log(this.reviews);
-      
+      this.getBook.reviewLength = this.reviews.length;
     });
     
   }

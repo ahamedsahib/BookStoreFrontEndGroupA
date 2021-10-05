@@ -21,12 +21,12 @@ export class BookServiceService {
   }
   GetWishList()
   {
-    return this.httpService.get(`${environment.baseUrl}/api/WishList/getwishlist?userId=${this.userdetails.customerId}`,null,true,this.header);
+    return this.httpService.get(`${environment.baseUrl}/api/WishList/getwishlist?userId=${this.userdetails==null?null:this.userdetails.customerId}`,null,true,this.header);
   }
   GetCartItem()
   {
     console.log('token:',this.header);
-    return this.httpService.get(`${environment.baseUrl}/api/Cart/GetCartItem?userId=${this.userdetails.customerId}`,null,true,this.header);
+    return this.httpService.get(`${environment.baseUrl}/api/Cart/GetCartItem?userId=${this.userdetails==null?null:this.userdetails.customerId}`,null,true,this.header);
   }
   GetBookDetails(id:any)
   {
@@ -83,6 +83,6 @@ export class BookServiceService {
     return this.httpService.post(`${environment.baseUrl}/api/Book/AddCustomerFeedBack`,param,true,this.header);
   }
   GetOrderItem(){
-    return this.httpService.get(`${environment.baseUrl}/api/Order/getorderlist?userId=${this.userdetails.customerId}`);
+    return this.httpService.get(`${environment.baseUrl}/api/Order/getorderlist?userId=${this.userdetails==null?null:this.userdetails.customerId}`);
   }
 }

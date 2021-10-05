@@ -25,6 +25,8 @@ export class HomeComponent implements OnInit {
   userdetails=JSON.parse(localStorage.getItem('userDetails')!);
   constructor(private router:Router,private statusdata: DataSharingServiceService,private bookService:BookServiceService) { }
   ngOnInit(): void {
+    console.log("ngOnint called");
+    
      this.getBooks();
      this.statusdata.currentStatus.subscribe((status:boolean) => 
       {
@@ -43,7 +45,9 @@ Logout()
   localStorage.removeItem('userDetails');
   localStorage.removeItem('token');
   this.router.navigate(['/home']);
-  this.statusdata.changeStatus(true);
+  this.userdetails = null;
+  this.isBadgeHidden = true;
+  this.CartList = null;
 }
 Search()
 {

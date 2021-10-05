@@ -7,6 +7,7 @@ import { HomeComponent } from './Component/home/home.component';
 import { GetBooksComponent } from './Component/get-books/get-books.component';
 import { BookComponent } from './Component/book/book.component';
 import { OrderSuccessfullComponent } from './Component/order-successfull/order-successfull.component';
+import { AdminDashboardComponent } from './Component/admin-dashboard/admin-dashboard.component';
 
  
 const routes: Routes = [ 
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path:'home', component:HomeComponent},
   { path:'getBooks', component:GetBooksComponent},
   { path:'book', component:BookComponent},
-  {path:'Order-successfull',component:OrderSuccessfullComponent}
+  {path:'Order-successfull',component:OrderSuccessfullComponent},
+  {path:'admin',component:AdminDashboardComponent}
 ];
 
 @NgModule({

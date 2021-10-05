@@ -16,6 +16,7 @@ export class GetBooksComponent implements OnInit {
   outColor="#E8E8E8";
   defaultColor = "#FFF";
   display=1;
+  reviewLength:any;
   res:any;
   constructor(private bookService:BookServiceService,private home:HomeComponent,
     private statusdata: DataSharingServiceService) {
@@ -76,7 +77,17 @@ export class GetBooksComponent implements OnInit {
         this.ChangeOrder(0);
     });
   }
-  
+  getReviewCount(id:any)
+  {
+    console.log(id,"bookId");
+    
+    this.bookService.GetCustomerFeedBack(id).subscribe((result:any)=>{
+      console.log(result.data,"getCustomer");
+      //console.log();
+      
+      return result.data.length;
+    });
+  }
   ChangeOrder(num:any)
   {
     console.log(this.returnedBooks,"retbooks");
