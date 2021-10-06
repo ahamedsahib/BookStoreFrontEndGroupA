@@ -1,9 +1,10 @@
 ::ng-deep .dialog-container-custom-edit .mat-dialog-container 
 {
     width: 600px;
-    height: 530px;
+    min-height: 550px;
     border-radius: 7px;
     padding: 0px 0px 0px 0px!important;
+    overflow-y: hidden;
 }
 .editBook{
     display: flex;
@@ -20,9 +21,9 @@
     flex: 1;
 }
 .getInput{
-    outline: none;
+    //outline: none;
     font-size: 14px;
-    border: none;
+    border: 1px solid #E2E2E2;
     overflow-y: hidden;
 }
 .editContent{

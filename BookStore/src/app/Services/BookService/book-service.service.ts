@@ -85,4 +85,18 @@ export class BookServiceService {
   GetOrderItem(){
     return this.httpService.get(`${environment.baseUrl}/api/Order/getorderlist?userId=${this.userdetails==null?null:this.userdetails.customerId}`);
   }
+  UpdateBook(data:any){
+    const params = {
+      BookId: Number(data.bookId),
+      BookName: data.bookName,
+      AuthorName: data.authorName,
+      Price: Number(data.price),
+      BookDescription: data.bookDescription,
+      BookCount: Number(data.bookCount),
+      OriginalPrice: Number(data.originalPrice),
+      Image:data.image,
+      Rating: Number(data.rating)
+    }
+    return this.httpService.put(`${environment.baseUrl}/api/Book/UpdateBook`,params,true,this.header);
+  }
 }
