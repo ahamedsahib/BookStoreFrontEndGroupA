@@ -99,4 +99,25 @@ export class BookServiceService {
     }
     return this.httpService.put(`${environment.baseUrl}/api/Book/UpdateBook`,params,true,this.header);
   }
+
+  addBook(data:any,image:any)
+  {
+    const params={
+      BookName : data.Title,
+      BookDescription : data.Description,
+      AuthorName : data.Author,
+      Price : Number(data.Price),
+      BookCount : Number(data.BookCount),
+      OriginalPrice : Number(data.OriginalPrice),
+      Rating:3,
+      Image:image
+    }
+    console.log(params);
+    return this.httpService.post(`${environment.baseUrl}/api/Book/AddBook`,params,true,this.header);
+  }
+
+  addImage(file:any)
+  {
+    return this.httpService.put(`${environment.baseUrl}/api/Book/AddImage`,file,true,this.header);
+  }
 }
