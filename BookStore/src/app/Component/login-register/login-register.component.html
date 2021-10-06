@@ -27,13 +27,8 @@
                                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </button>
                                 <mat-error *ngIf="LoginForm.controls['Password'].invalid" style="margin-top:15px;">{{getErrorMessage("Password")}}</mat-error>
-                            </mat-form-field>
-                            
+                            </mat-form-field> 
                             <div class="forgotPassword">
-                                <div class="isAdmin">
-                                    <input type="checkbox" (change)="onChange()" style="cursor: pointer;"/>&nbsp;
-                                    <label>Admin</label><br>
-                                </div>
                                 <button mat-flat-button class="forgotPassword" [routerLink]="['/forgotPassword']">Forgot Password?</button>
                             </div>
                         </div>
