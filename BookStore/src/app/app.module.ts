@@ -40,6 +40,7 @@ import { AdminDashboardComponent } from './Component/admin-dashboard/admin-dashb
 import { EditBookComponent } from './Component/edit-book/edit-book.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteNoteComponent } from './Component/delete-note/delete-note.component';
+import { AddBookComponent } from './Component/add-book/add-book.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { DeleteNoteComponent } from './Component/delete-note/delete-note.compone
     MyOrderComponent,
     AdminDashboardComponent,
     EditBookComponent,
-    DeleteNoteComponent
+    DeleteNoteComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,

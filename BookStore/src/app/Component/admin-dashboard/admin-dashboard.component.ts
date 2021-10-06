@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { BookServiceService } from 'src/app/Services/BookService/book-service.service';
 import { DataSharingServiceService } from 'src/app/Services/DataSharing/data-sharing-service.service';
+import { AddBookComponent } from '../add-book/add-book.component';
 import { DeleteNoteComponent } from '../delete-note/delete-note.component';
 import { EditBookComponent } from '../edit-book/edit-book.component';
 import { HomeComponent } from '../home/home.component';
@@ -81,6 +82,12 @@ export class AdminDashboardComponent implements OnInit {
     this.bookService.GetCustomerFeedBack(id).subscribe((result: any) => {
       console.log(result.data, "getCustomer");
       return result.data.length;
+    });
+  }
+  AddBook()
+  {
+    this.dialog.open(AddBookComponent, {
+      panelClass: 'dialog-container-custom-add'
     });
   }
   editBook(book:any) {
