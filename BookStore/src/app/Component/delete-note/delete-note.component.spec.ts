@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeleteNoteComponent } from './delete-note.component';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 describe('DeleteNoteComponent', () => {
   let component: DeleteNoteComponent;
@@ -8,6 +9,13 @@ describe('DeleteNoteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        MatDialogModule,
+      ],
+      providers: [
+        {provide: MatDialogRef, useValue: {}},
+        { provide: MAT_DIALOG_DATA, useValue: [] },
+      ],
       declarations: [ DeleteNoteComponent ]
     })
     .compileComponents();

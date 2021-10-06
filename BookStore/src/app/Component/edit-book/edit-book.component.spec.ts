@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditBookComponent } from './edit-book.component';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 describe('EditBookComponent', () => {
   let component: EditBookComponent;
@@ -8,6 +9,13 @@ describe('EditBookComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        MatDialogModule,
+      ],
+      providers: [
+        {provide: MatDialogRef, useValue: {}},
+        { provide: MAT_DIALOG_DATA, useValue: [] },
+      ],
       declarations: [ EditBookComponent ]
     })
     .compileComponents();

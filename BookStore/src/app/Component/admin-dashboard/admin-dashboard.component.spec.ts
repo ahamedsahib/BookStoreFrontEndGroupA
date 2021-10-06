@@ -4,7 +4,8 @@ import { AdminDashboardComponent } from './admin-dashboard.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterTestingModule } from '@angular/router/testing';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 describe('AdminDashboardComponent', () => {
   let component: AdminDashboardComponent;
@@ -15,7 +16,9 @@ describe('AdminDashboardComponent', () => {
       imports: [
         HttpClientTestingModule,
         MatSnackBarModule,
-        RouterTestingModule 
+        RouterTestingModule,
+        MatDialogModule,
+        NgxPaginationModule 
       ],
       declarations: [ AdminDashboardComponent ]
     })
