@@ -12,6 +12,7 @@ export class DeleteNoteComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   Close()
   {
     this.dialogRef.close();

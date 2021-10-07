@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BookServiceService } from 'src/app/Services/BookService/book-service.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { DataSharingServiceService } from 'src/app/Services/DataSharing/data-sharing-service.service';
 
 @Component({
   selector: 'app-edit-book',
@@ -12,8 +13,10 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class EditBookComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<EditBookComponent>,@Inject(MAT_DIALOG_DATA) public data:any,
-  private bookService:BookServiceService, public snackBar:MatSnackBar,) { }
+  private bookService:BookServiceService, public snackBar:MatSnackBar,private statusdata: DataSharingServiceService) { }
   EditBookForm !: FormGroup
+  imageSrc=this.data.image;
+
   ngOnInit(): void {
     console.log(this.data);
     
@@ -24,6 +27,7 @@ export class EditBookComponent implements OnInit {
   }
   Save()
   {
+    this.data.image=this.imageSrc;
     this.bookService.UpdateBook(this.data)
     .subscribe((result:any)=>{
       this.snackBar.open(`${result.message}`, '', {
@@ -31,6 +35,7 @@ export class EditBookComponent implements OnInit {
         verticalPosition: 'bottom',
         horizontalPosition: 'left'
       });
+        this.statusdata.changeStatus(true);
       this.dialogRef.close();
     },error => {  
       this.snackBar.open(`${error.error.message}`, '', {
@@ -39,6 +44,21 @@ export class EditBookComponent implements OnInit {
         horizontalPosition: 'left'
       });
     })
+  }
+  onFileChanged(event: any)
+  {
+    var files: File=event.target.files.item(0);
+      console.log(event.target.files.item(0));
+      const form = new FormData();
+      form.append('image',files,files.name);
+      console.log(form);
+      console.log(this.imageSrc,"src");
+      
+      this.bookService.addImage(form).subscribe((result:any)=>{
+        this.imageSrc=result.data;
+        this.statusdata.changeStatus(true);
+        console.log(result);
+      });
   }
 
 }

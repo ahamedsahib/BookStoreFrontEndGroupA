@@ -1,6 +1,10 @@
 <div class="editBook">
     <div class="imageContainer">
-        <img src={{data.image}} alt=""  style="width: 187px;max-height: 239px;padding: 5px;">
+        <label class="image">
+            <input type="file" name="image" accept="image/*" id="image" style="display:none;"
+            (change)="onFileChanged($event)" />
+            <img [src]="imageSrc" alt=""  class="image"style="width: 187px;max-height: 239px;padding: 5px;">
+        </label>
     </div>
     <div class="editContent">
         <span class="editItems">

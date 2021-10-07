@@ -110,6 +110,22 @@ getErrorMessageRegister(inputName:string) {
     this.userService.Login(this.LoginForm.value)
     .subscribe((result:any)=>{
       console.log(result);
+      if(result.data.isAdmin)
+      {
+        localStorage.setItem('userDetails',JSON.stringify(result.data));
+        localStorage.setItem('token',JSON.stringify(result.resultMessage));
+        this.snackBar.open(`${result.message}`, '', {
+          duration: 3000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+        if(result.status == true)
+        {
+          this.router.navigate(['/admin']);
+        }
+      }
+      else
+      {
         localStorage.setItem('userDetails',JSON.stringify(result.data));
         localStorage.setItem('token',JSON.stringify(result.resultMessage));
         this.snackBar.open(`${result.message}`, '', {
@@ -121,6 +137,7 @@ getErrorMessageRegister(inputName:string) {
         {
           this.router.navigate(['/home']);
         }
+      }
     },error => {  
       this.snackBar.open(`${error.error.message}`, '', {
         duration: 3000,
