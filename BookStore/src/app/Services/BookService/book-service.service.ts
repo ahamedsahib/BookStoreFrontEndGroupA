@@ -120,4 +120,8 @@ export class BookServiceService {
   {
     return this.httpService.put(`${environment.baseUrl}/api/Book/AddImage`,file,true,this.header);
   }
+  DeleteTheBook(id:any)
+  {
+    return this.httpService.delete(`${environment.baseUrl}/api/Book/RemoveBooks?BookId=${id}`,null,true,this.header);
+  }
 }

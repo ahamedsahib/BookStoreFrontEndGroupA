@@ -75,6 +75,7 @@ export class GetBooksComponent implements OnInit {
         this.returnedBooks = result.data;
         console.log(this.returnedBooks);
         this.ChangeOrder(0);
+        return result.status;
     });
   }
   getReviewCount(id:any)
