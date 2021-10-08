@@ -36,5 +36,11 @@ describe('GetBooksComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call the GetBook method',async() => {
+    fixture.detectChanges();
+    spyOn(component, 'getBooks');
+    expect(component.getBooks).toHaveBeenCalledTimes(0);
+  });
 });
 
