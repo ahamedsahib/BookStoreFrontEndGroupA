@@ -20,7 +20,7 @@
 }
 .allBooks{
     width: 80%;
-    @include displayFlex($direction:row,$justifyContent:space-between,$alignItems:flex-start);
+    @include displayFlex($direction:row,$justifyContent:flex-start,$alignItems:flex-start);
     flex-wrap: wrap;
     
 }
@@ -28,6 +28,7 @@
     margin-top: 25px;
     cursor: pointer;
     box-shadow: none;
+    margin-right: 25px;
    
 }
 .book:hover{
@@ -47,6 +48,7 @@
     cursor: pointer;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     outline: none;
+    margin-right: 27px;
 }
 .bookCard{
     min-width: 240px;
