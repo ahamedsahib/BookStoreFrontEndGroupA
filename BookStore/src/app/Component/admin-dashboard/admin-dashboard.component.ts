@@ -52,6 +52,7 @@ export class AdminDashboardComponent implements OnInit {
   }
   Logout() {
     this.router.navigate(['/login']);
+    localStorage.removeItem('userDetails');
   }
 
   ViewBook(bookC: any) {
