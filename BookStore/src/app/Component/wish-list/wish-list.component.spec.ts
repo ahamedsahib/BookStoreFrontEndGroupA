@@ -1,5 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { WishListComponent } from './wish-list.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -30,4 +29,10 @@ describe('WishListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call the getbook method', waitForAsync(() => {
+    fixture.detectChanges();
+    spyOn(component, 'getBooks');
+    expect(component.getBooks).toHaveBeenCalledTimes(0);
+  }));
 });

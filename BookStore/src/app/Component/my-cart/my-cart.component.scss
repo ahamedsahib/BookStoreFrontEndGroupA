@@ -10,10 +10,6 @@
     @include displayFlex($direction:column,$justifyContent:flex-start,$alignItems:center);
     padding-bottom: 15px;
 }
-.row{
-    width: 96% !important;
-    @include displayFlex($direction:row,$justifyContent:start,$alignItems:center);
-}
 .home{
     font-weight: 600;
 }
@@ -180,7 +176,6 @@ mat-label{
    justify-content: flex-start;
    align-items: center;
    flex-direction: row;
-   margin-left: 203px;
 }
 .addressType{
     font-size: 20px;
