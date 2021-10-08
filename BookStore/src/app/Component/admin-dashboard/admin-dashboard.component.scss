@@ -1,0 +1,215 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");
+
+mat-toolbar{
+    display: flex;
+}
+.ToolBar{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #A03037;
+    z-index: 1;
+}
+.image{
+    height:30px;
+    margin-bottom: 11px;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+}
+.icon{
+    border:0.5px solid #8F2B2F;
+    border-radius: unset;
+    width: 99px;
+    height: 59px;
+    display: flex;
+    justify-content: center;
+}
+.endIcons{
+    display: flex;
+    flex-direction: row;
+}
+.iconbutton {
+        padding: 9px;
+        width: -23px;
+        height: -23px;
+        font-size: 15px;
+        line-height: 22px;
+        display: flex;
+        justify-content: center;
+}
+.noteTitle{
+    color: #FFFF;
+    font-weight: light;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    background-color: #A03037;
+    z-index: 1;
+}
+@mixin displayFlex($property:flex, $direction:row,$justifyContent:center,$alignItems:center) {
+    display: $property;
+    flex-direction:$direction;
+    justify-content: $justifyContent;
+    align-items: $alignItems;
+  }
+.booksContainer
+{
+    margin: 10px;
+    @include displayFlex($direction:column,$justifyContent:space-between,$alignItems:center);
+    padding-bottom: 15px;
+}
+.row{
+    width: 80%;
+    @include displayFlex($direction:row,$justifyContent:space-between,$alignItems:center);
+}
+.titleRow
+{
+    @include displayFlex($direction:row,$justifyContent:none,$alignItems:center);
+}
+.allBooks{
+    width: 80%;
+    @include displayFlex($direction:row,$justifyContent:flex-start,$alignItems:flex-start);
+    flex-wrap: wrap;
+    margin-right:10px ;
+    
+}
+.book{
+    margin-top: 25px;
+    cursor: pointer;
+    box-shadow: none;
+    margin-right:25px ;
+   
+}
+.book:hover{
+    
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+}
+.sortTag
+{
+    width: 150px;
+    height: 20px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    opacity: 1;
+    border: 1px solid #E5E5E5;
+    padding:3px;
+    border-radius: 3px;
+    height: 30px;
+    cursor: pointer;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    outline: none;
+}
+.bookCard{
+    min-width: 240px;
+    min-height: 270px;
+    padding: 0;
+}
+
+.outOfStock{
+    background-color: white;
+    padding:5px 40px 5px 40px;
+    font-weight: 600;
+    margin: -30px 0px 0px 0px;
+    z-index: 1;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+.imageContainer
+{
+    @include displayFlex($direction:column,$justifyContent:center,$alignItems:center);
+    min-height: 150px;
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    padding-bottom: 15px;
+}
+.BookContent{
+    color:black;
+    padding:6px;
+}
+.bookTitle{
+    font-weight: 450;
+    font-size: 15px;
+    margin: 0;
+}
+.bookAuthor{
+    color: #9C9C9C;
+    margin: 2px;
+}
+.bookRatingContainer{
+    margin: 2px;
+    display: flex;
+    align-items: center;
+}
+.bookRating
+{
+    background-color: #388E3C;
+    border-radius: 3px;
+    padding: 1px 3px 1px 3px;
+    color: #FFFFFF;
+    font-weight: 500;
+    margin: 2px;
+}
+.bookImage{
+    height: 130px;
+    width: 100px;
+}
+.price{
+    font-weight: 500;
+    font-size: 15px;
+    @include displayFlex($direction:row,$justifyContent:space-between,$alignItems:center);
+    width: 100%;
+    margin-left: 7px;
+}
+.bookPrice{
+    @include displayFlex($direction:row,$justifyContent:space-between,$alignItems:center);
+}
+.bookIcons{
+    @include displayFlex($direction:row,$justifyContent:space-between,$alignItems:center);
+    margin-top: -12px;
+}
+.strike{
+    color:#9C9C9C;
+}
+
+  .footer{
+    @include displayFlex($direction:row,$justifyContent:none,$alignItems:center);
+  }
+  .paginator{
+      margin-top: 45px;
+    @include displayFlex($direction:row,$justifyContent:none,$alignItems:center);
+  }
+@media only screen and (max-width: 600px) {
+    .row{
+        width: 30%;
+        @include displayFlex($direction:column,$justifyContent:center,$alignItems:center);
+    }
+    .allBooks{
+        width: 30%;
+        @include displayFlex($direction:row,$justifyContent:center,$alignItems:center);
+        flex-wrap: wrap;
+    }
+}
+::ng-deep .ngx-pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background-color: #388E3C !important;
+    color: #fefefe;
+    cursor: pointer !important;
+}
+.footer{
+    width: 100%;
+    height: 30px;
+    background-color: black;
+    color: white;
+}
+.addIcon{
+    font-size: 22px;
+}
+.AddButton{
+    background-color:#A03037;
+    color: #fff;
+    border-radius: 22px;
+border: 4px solid #F5F5F5;
+box-shadow: -2px 4px 4px 0px rgb(0 0 0 / 20%), 1px 0px 3px 1px rgb(0 0 0 / 14%), 0px 2px 1px 1px rgb(0 0 0 / 12%)
+}

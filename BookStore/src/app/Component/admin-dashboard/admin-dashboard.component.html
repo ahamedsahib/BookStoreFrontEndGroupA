@@ -1,0 +1,68 @@
+<mat-toolbar class="ToolBar">
+    <div class="header">
+        <div class="menu" style="margin-top: 5px;cursor: pointer;" >
+            <img src="../../../assets/education.svg" class="image">
+            <mat-card-title style="margin-left: 5px;margin-top: -2px;">
+                <span style="color: #FFFFFF;font-weight:normal;">Bookstore</span>
+            </mat-card-title>
+        </div>
+        <div class="endIcons">
+            <div class="icon">
+                <button mat-icon-button class="example-icon favorite-icon iconbutton" (click)="Logout()">
+                    <mat-icon class="material-icons-outlined" style="font-size: 22px;color: #EDD8DA;" >logout
+                    </mat-icon><br>
+                    <p class="noteTitle">logout</p>
+                </button>
+            </div>
+        </div>
+    </div>
+</mat-toolbar>
+<div class="booksContainer">
+    <div class="row">
+        <span class="titleRow">
+            <h1>Books</h1>
+            <p style="color:#BEBEBE">&nbsp;({{books.length}} items)</p>
+        </span>
+        <span style=" margin-right: 36px;">
+            <button type="submit" mat-raised-button class="button" 
+            class="AddButton" (click)="AddBook()"><mat-icon class="addIcon">add</mat-icon>Add Book</button>   
+        </span>
+    </div>
+    <div class="allBooks">
+        <div class="book" *ngFor="let book of books | paginate: { itemsPerPage: 12, currentPage: p }" (click)="ViewBook(book)">
+            <mat-card class="bookCard" [style.background-color]="book.bookCount==0?outColor:defaultColor">
+                <div class="imageContainer" matTooltip="QUICK VIEW">
+                    <img src="{{book.image}}" style="margin: 10px;" class="bookImage"/>
+                    <span class="outOfStock" *ngIf="book.bookCount==0">OUT OF STOCK</span>
+                </div>
+                <div class="BookContent">
+                    <p class="bookTitle">{{book.bookName}}</p>
+                    <p class="bookAuthor">by {{book.authorName}}</p>
+                    <span class="bookRatingContainer">
+                        <span class="bookRating">
+                            {{book.rating}} ★
+                        </span>
+                    </span>
+                    <span class="price">
+                        <span class="bookPrice">
+                            <p>₹&nbsp;{{book.price}}</p>
+                            <p class="strike">&nbsp;<s>₹&nbsp;{{book.originalPrice}}</s></p>
+                        </span>
+                        <span class="bookIcons">
+                            <button mat-icon-button class="example-icon" (click)="editBook(book)">
+                                <mat-icon class="material-icons-outlined" style="color:#A03037" matTooltip="Edit" >edit</mat-icon>
+                            </button>
+                            <button mat-icon-button class="example-icon" (click)="deleteBook(book)">
+                                <mat-icon class="material-icons-outlined" style="color:#A03037" matTooltip="Delete">delete</mat-icon>
+                            </button>
+                        </span>
+                    </span>
+                </div>
+            </mat-card>
+            
+        </div>
+    </div>
+    <div class="paginator">
+        <pagination-controls class="pagi" (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>
