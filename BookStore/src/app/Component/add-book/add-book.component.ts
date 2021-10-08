@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { BookServiceService } from 'src/app/Services/BookService/book-service.service';
 import { DataSharingServiceService } from 'src/app/Services/DataSharing/data-sharing-service.service';
@@ -17,13 +17,19 @@ export class AddBookComponent implements OnInit {
   imageSrc:string | undefined;
   ngOnInit(): void {
     this.AddBookForm = new FormGroup({
-      Title: new FormControl(),
-      Description:new FormControl(),
-      Author:new FormControl(),
-      Price:new FormControl(),
-      OriginalPrice:new FormControl(),
-      BookCount:new FormControl()
+      Title: new FormControl('',[Validators.required]),
+      Description:new FormControl('',[Validators.required]),
+      Author:new FormControl('',[Validators.required]),
+      Price:new FormControl('',[Validators.required]),
+      OriginalPrice:new FormControl('',[Validators.required]),
+      BookCount:new FormControl('',[Validators.required])
     });
+  }
+  onSubmit() {
+    if (this.AddBookForm.valid) 
+    {
+      this.AddBook();
+    }
   }
   Close()
   {
