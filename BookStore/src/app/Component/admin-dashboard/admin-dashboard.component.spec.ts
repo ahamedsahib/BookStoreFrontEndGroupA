@@ -38,7 +38,7 @@ describe('AdminDashboardComponent', () => {
   it('should call the add method', async(() => {
     fixture.detectChanges();
     spyOn(component, 'getBooks').and.callThrough();
-    component.getBooks();
+    component.ngOnInit();
     expect(component.getBooks).toHaveBeenCalledTimes(1);
   }));
 });
