@@ -1,11 +1,12 @@
-import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
 
+
+import { async, ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { GetBooksComponent } from './get-books.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BookServiceService } from 'src/app/Services/BookService/book-service.service';
-import { async, of } from 'rxjs';
+
 
 describe('GetBooksComponent', () => {
   let component: GetBooksComponent;
@@ -36,5 +37,12 @@ describe('GetBooksComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call the getbook method', waitForAsync(() => {
+    fixture.detectChanges();
+    spyOn(component, 'getBooks');
+    expect(component.getBooks).toHaveBeenCalledTimes(0);
+  }));
+
 });
 
