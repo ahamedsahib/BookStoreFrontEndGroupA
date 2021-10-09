@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MyOrderComponent } from './my-order.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -30,4 +30,11 @@ describe('MyOrderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call the getbook method', waitForAsync(() => {
+    fixture.detectChanges();
+    spyOn(component, 'getBooks').and.callThrough;
+    component.getBooks();
+    expect(component.getBooks).toHaveBeenCalledTimes(1);
+  }));
 });

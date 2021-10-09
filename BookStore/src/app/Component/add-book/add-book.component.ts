@@ -36,7 +36,7 @@ export class AddBookComponent implements OnInit {
     this.dialogRef.close();
   }
   
-  onFileChanged(event: any)
+  onFileChanged(event: any) 
   {
     var files: File=event.target.files.item(0);
       console.log(event.target.files.item(0));
