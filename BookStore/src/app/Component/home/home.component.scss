@@ -146,3 +146,16 @@ mat-toolbar{
     }
     
 }
+@media only screen and (max-width: 620px) {
+    ::ng-deep .search
+    {
+    .mat-form-field-flex {
+          width: 50px;
+    }
+    }
+    .icon{
+        width: 50px;
+        border: none;
+    }
+    
+}
